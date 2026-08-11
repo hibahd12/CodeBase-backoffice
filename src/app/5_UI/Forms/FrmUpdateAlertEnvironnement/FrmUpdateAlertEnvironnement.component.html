@@ -1,0 +1,274 @@
+
+<div class="card">
+    <div class="card-body">
+        {{"Fiche_évenement"|translate}}
+        <h4 class="card-title mb-4"> </h4>
+        <aw-wizard [navBarLayout]="'large-empty-symbols'">
+            <form [formGroup]="alertFirstWizardBuilder">
+                <aw-wizard-step stepTitle="Fiche événement">
+                    <ng-template awWizardStepSymbol>1</ng-template>
+                    <div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-lg-6">
+                                                    <div class="mb-3">
+                                                        <label class="form-label">
+                                                            {{"Donneur_Alerte"|translate}}
+                                                            <span class="star">*</span></label>
+                                                        <OhmNgSelect [items]="allDonor" [placeholder]="'Donneur'"
+                                                            [entityName]="environment.entityNameDonneurAlerte"
+                                                            (loadData)="getAllDonor()" [bindLabel]="'title'"
+                                                            [bindValue]="'title'" formControlName="donor"
+                                                            (eventEmitterOnAdd)="onAddItemDonnor($event)">
+                                                        </OhmNgSelect>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <div class="mb-3">
+                                                        <label class="form-label">
+                                                            {{"DateHeure_decouverte"|translate}}
+                                                            <span class="star">*</span></label><br />
+                                                        <input class="form-control" id="example-date"
+                                                            formControlName="datedecouverte" type="datetime-local"
+                                                            name="date" />
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <div class="mb-3">
+                                                        {{"Lieux"|translate}}
+                                                        <label class="form-label"> <span
+                                                                class="star">*</span></label><br />
+                                                        <OhmNgSelect [items]="ports" [placeholder]="'Lieux'"
+                                                            [entityName]="environment.entityNameLieuxAlerte"
+                                                            [bindValue]="'title'" [bindLabel]="'title'"
+                                                            (loadData)="getPorts()"
+                                                            (eventEmitterOnAdd)="onAddItemLieux($event)"
+                                                            formControlName="selectedPort" [multiple]="false">
+                                                        </OhmNgSelect>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <div class="mb-3">
+                                                        {{"Presents"|translate}}
+                                                        <label class="form-label"><span
+                                                                class="star">*</span></label><br />
+                                                        <OhmNgSelect [items]="allPresents" [placeholder]="'Present'"
+                                                            [entityName]="environment.entityNamePresentAlerte"
+                                                            (loadData)="getAllPresent()" [bindLabel]="'title'"
+                                                            [bindValue]="'title'"
+                                                            (eventEmitterOnAdd)="onAddItemPresent($event)"
+                                                            formControlName="present">
+                                                        </OhmNgSelect>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <div class="mb-3">
+                                                        {{"Intervenant"|translate}}
+                                                        <label class="form-label"><span
+                                                                class="star">*</span></label><br />
+                                                        <OhmNgSelect [items]="allIntervenants"
+                                                            [placeholder]="'Intervenant'"
+                                                            [entityName]="environment.entityNameIntervenantAlerte"
+                                                            [bindLabel]="'title'" [bindValue]="'title'"
+                                                            (loadData)="getAllIntervenant()"
+                                                            formControlName="intervenant"
+                                                            (eventEmitterOnAdd)="onAddItemIntervenant($event)">
+                                                        </OhmNgSelect>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <div class="mb-3">
+                                                        {{"Tp_intervenant"|translate}}
+                                                        <label class="form-label"> <span class="star">*</span></label>
+                                                        <div class="mb-3">
+                                                            <ng-select [items]="typeOptions" bindLabel="label"
+                                                                bindValue="value" formControlName="type_intervention">
+                                                            </ng-select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-3">
+                                                    <label class="col-md-2 form-label">
+                                                        {{"Localisation"|translate}}
+                                                        <span class="star">*</span></label>
+                                                    <div class="col-md-10">
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <label for="nord" class="form-label">
+                                                                    {{"Nord"|translate}}
+                                                                </label>
+                                                                <textarea id="nord" class="form-control"
+                                                                    formControlName="nord"></textarea>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <label for="sud" class="form-label">
+                                                                    {{"Sud"|translate}}
+                                                                </label>
+                                                                <textarea id="sud" class="form-control"
+                                                                    formControlName="sud"></textarea>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <ul class="list-inline wizard mb-0">
+                        <li class="next list-inline-item float-end"><button class="btn btn-primary"
+                                (click)="nextStep()">
+                                {{"Next"|translate}}
+                            </button>
+                        </li>
+                    </ul>
+                </aw-wizard-step>
+            </form>
+            <aw-wizard-step stepTitle="Fiche d'éspece concernée">
+                <ng-template awWizardStepSymbol>2</ng-template>
+                <form [formGroup]="alertSecondWizardBuilder">
+                    <div class="modal-body">
+                        <div class="row mt-3">
+                            <div class="col-12">
+                                <div class="row mb-3 mt-3">
+                                    <label class="col-md-3 col-form-label">
+                                        {{"Sexe"|translate}}
+                                        <span class="star">*</span></label>
+                                    <div class="col-md-9">
+                                        <label>
+                                            <input type="radio" name="sexe" value="male" formControlName="sexe" />
+                                            {{"Male"|translate}}
+                                        </label>
+                                        <label class="radio-button">
+                                            <input type="radio" name="sexe" value="femelle" formControlName="sexe" />
+                                            {{"Femelle"|translate}}
+                                        </label>
+                                        <label class="radio-button">
+                                            <input type="radio" name="sexe" value="nonIdentifié"
+                                                formControlName="sexe" />
+                                            {{"Non_identifie"|translate}}
+                                        </label>
+                                    </div>
+                                </div>
+                                <table class="table table-striped table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th class="sorting_asc">
+                                                {{"Especes"|translate}}
+                                            </th>
+                                            <th class="sorting_asc">
+                                                {{"Mesure"|translate}}
+                                            </th>
+                                            <th class="sorting_asc">
+                                                {{"nombre"|translate}}
+                                            </th>
+                                            <th>
+                                                <button class="btn btn-default" type="button" (click)="addnewRow()">
+                                                    {{"Ajouter"|translate}}
+                                                </button>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let espece of listEspeces; let i = index">
+                                            <td>
+                                                <OhmNgSelect [items]="allSpecies" [placeholder]="'Specie'"
+                                                    [entityName]="environment.entityNameSpecieAlerte"
+                                                    (loadData)="getAllSpecies()" [bindLabel]="'title'"
+                                                    [bindValue]="'title'" (eventEmitterOnAdd)="onAddItemSpecie($event)"
+                                                    [(ngModel)]="espece.specie" [ngModelOptions]="{standalone: true}"
+                                                    [multiple]="false">
+                                                </OhmNgSelect>
+                                            </td>
+                                            <td>
+                                                <input type="text" required="required" class="form-control"
+                                                    [(ngModel)]="espece.mesure" [ngModelOptions]="{standalone: true}" />
+                                            </td>
+                                            <td>
+                                                <input type="text" required="required" class="form-control"
+                                                    [(ngModel)]="espece.nombre" [ngModelOptions]="{standalone: true}" />
+                                            </td>
+                                            <td>
+                                                <button type="button" class="btn btn-danger btn-rounded mb-2 me-2"
+                                                (click)="cancelRow(i)">Annuler</button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <div class="row mb-3">
+                                    <label class="col-md-3 col-form-label">
+                                        {{"Img_espece"|translate}}
+                                        <span class="star">*</span></label>
+                                    <div class="col-lg-3">
+                                        <div class="mb-3">
+                                            <label for="singleImageInput" class="inputfile">
+                                                <div class="image-drop-area">
+                                                    <div class="selected-image-name" *ngIf="principalSelectedImage">
+                                                        {{ principalSelectedImage.name }}</div>
+                                                    <span class="btn-file">
+                                                        {{"Choisir_img_Principale"|translate}}
+                                                    </span>
+                                                    <input id="inputTag" type="file" accept="image/jpeg,image/png"
+                                                        (change)="onPrincipaleImageSelected($event)">
+                                                </div>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <div class="mb-3">
+                                            <label for="inputTag" class="inputfile">
+                                                <div class="image-drop-area">
+                                                    <div *ngFor="let file of selectedImages"
+                                                        class="selected-image-name">{{
+                                                        file.name }}</div>
+                                                    <span class="btn-file">
+                                                        {{"Choisir_img"|translate}}
+                                                    </span>
+                                                    <input id="inputTag" type="file" accept="image/jpeg,image/png"
+                                                        (change)="onImagesSelected($event)" multiple>
+                                                </div>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <label class="col-md-3 col-form-label">
+                                            {{"AutresObservation"|translate}}
+                                        </label>
+                                        <div class="col-md-9">
+                                            <textarea class="form-control"
+                                                formControlName="observation_environments"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <ul class="list-inline wizard mb-0">
+                            <li class="previous list-inline-item"><button class="btn btn-primary" awPreviousStep>
+                                    {{"Previous"|translate}}
+                                </button>
+                            </li>
+                            <li class="next list-inline-item float-end">
+                                <div class="row">
+                                    <div class="row mb-3">
+                                        <div class="col-md-10">
+                                            <button type="button" class="btn btn-primary me-2"
+                                                (click)="saveAlertEnvironment()">
+                                                {{"EnregistrerAlerte"|translate}}
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </form>
+            </aw-wizard-step>
+        </aw-wizard>
+    </div>
+</div>

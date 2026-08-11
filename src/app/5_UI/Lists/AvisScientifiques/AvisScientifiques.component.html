@@ -1,0 +1,89 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-body">
+          <div class="row mb-2">
+            <div class="col-sm-4">
+              <div class="search-box me-2 mb-2 d-inline-block">
+                <div class="position-relative">
+                  <h2 class="titre-h2 titre-table mar-bott-20">Avis Scientifiques</h2>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-8">
+              <div class="text-sm-end">
+                <button type="button" class="btn btn-success btn-rounded mb-2 me-2"
+                  (click)="NavigateToForm('Sys_FrmPriseEnCharge')"><i class="mdi mdi-plus mr-1"></i>
+                  Ajouter un avis scientifique</button>
+              </div>
+            </div>
+          </div>
+          <div class="table-responsive">
+            <div class="table-responsive mb-0">
+              <table class="table table-centered table-nowrap" style="table-layout: fixed;">
+                <thead class="table-light">
+                  <tr>
+                    <th class="align-middle" style="width: 100px;">date</th>
+                    <th class="align-middle" style="width: 250px;">Sujet</th>
+                    <th class="align-middle">Type</th>
+                    <th class="align-middle">Emetteur</th>
+                    <th class="align-middle">Demandeur initial</th>
+                    <th class="align-middle">Lieux</th>
+                    <th class="align-middle text-center">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let priseEncharge of dataGrid">
+                    <td>{{ priseEncharge?.dateCreation }}</td>
+                    <td style="max-width: 250px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" [title]="priseEncharge?.sujet">{{ priseEncharge?.sujet }}</td>
+                    <td>{{ priseEncharge?.nature }}</td>
+                    <td>{{ priseEncharge?.emetteur }}</td>
+                    <td>{{ priseEncharge?.beneficiaire }}</td>
+                    <td>{{ priseEncharge?.region?.join ? priseEncharge.region.join(', ') : priseEncharge?.region }}</td>
+                    <td>
+                      <div
+                        class="widget-content-right widget-content-actions d-flex justify-content-between align-items-center">
+                        <button class="btn btn-primary btn-sm btn-rounded" *ngIf="priseEncharge?.statut === 'statut1'"
+                          (click)="openForm('Sys_FrmTraitementAvis', priseEncharge)">Traitement
+                          de
+                          l’avis
+                          <i class="fa fa-solid fa-folder-open"></i>
+                        </button>
+                        <div class="widget-content-right widget-content-actions" *ngIf="priseEncharge?.statut === 'statut2'">
+                          <button class="btn btn-primary btn-sm btn-rounded" (click)="openForm('Sys_FrmResultat', priseEncharge)">Résultat
+                            <i class="fa fa-solid fa-folder-open"></i>
+                          </button>
+                        </div>
+                        <div class="widget-content-right widget-content-actions" *ngIf="priseEncharge?.statut === 'statut3'">
+                          <button class="btn btn-primary btn-sm btn-rounded" (click)="openForm('Sys_FrmAvisScientific', priseEncharge)">Voir
+                            <i class="fa fa-solid fa-folder-open"></i>
+                          </button>
+                        </div>
+                        <div class="widget-content-right widget-content-actions mx-1" *ngIf="priseEncharge?.statut === 'statut2'">
+                          <button class="btn btn-warning btn-sm btn-rounded" (click)="openForm('Sys_FrmTraitementAvis', priseEncharge)">
+                            <i class="fas fa-pencil-alt"></i>
+                          </button>
+                        </div>
+                        <div class="widget-content-right widget-content-actions mx-1" *ngIf="priseEncharge?.statut === 'statut3'">
+                          <button class="btn btn-warning btn-sm btn-rounded" (click)="openForm('Sys_FrmResultat', priseEncharge)">
+                            <i class="fas fa-pencil-alt"></i>
+                          </button>
+                        </div>
+                        <div class="widget-content-right widget-content-actions mx-1">
+                          <button class="btn btn-danger btn-sm btn-rounded" (click)="deleteAvis(priseEncharge)">
+                            <i class="fas fa-trash-alt"></i>
+                          </button>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

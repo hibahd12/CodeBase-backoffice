@@ -1,0 +1,170 @@
+<div>
+  <AvisStepper [currentStep]="3" [completedSteps]="[1, 2, 3]"></AvisStepper>
+  <div class="modal-body">
+    <div class="row">
+      <div class="col-12" *ngIf=this.priseEncharge>
+        <div class="card">
+          <h4 class="mb-0"><strong>Prise en charge</strong></h4>
+          <div class="card-body">
+            <br>
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="mb-3">
+                  <label class="form-label">Date de création</label>
+                  <input class="form-control" [(ngModel)]="this.priseEncharge.dateCreation" disabled>
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="mb-3">
+                  <label class="form-label">Type : </label>
+                  <div class="mb-3">
+                    <input class="form-control" [(ngModel)]="this.priseEncharge.nature" disabled />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="mb-3">
+                  <label class="form-label">Région</label>
+                  <input class="form-control" [(ngModel)]="this.priseEncharge.region" disabled />
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="mb-3">
+                  <label class="form-label">Emetteur</label><br />
+                  <div class="mb-3">
+                    <input class="form-control" [(ngModel)]="this.priseEncharge.emetteur" disabled />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="mb-3">
+                  <label class="form-label">Demandeur initial</label><br />
+                  <div class="mb-3">
+                    <input class="form-control" [(ngModel)]="this.priseEncharge.beneficiaire" disabled />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="table-responsive">
+              <div class="table-responsive mb-0">
+                <table class="table table-centered table-nowrap">
+                  <thead class="table-light">
+                    <tr>
+                      <th class="align-middle">Réf courrier</th>
+                      <th class="align-middle">Date réception</th>
+                      <th class="align-middle">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let courrier of courriers">
+                      <td>{{ courrier?.metadatas?.name }}</td>
+                      <td>{{ courrier?.metadatas?.dateReception }}</td>
+                      <td>
+                        <button class="btn btn-sm btn-outline-primary btn-rounded me-1" (click)="viewFile(courrier)" title="Voir">
+                          <i class="fas fa-eye"></i>
+                        </button>
+                        <button class="btn btn-sm btn-info btn-rounded me-1" (click)="downloadFile(courrier)" title="Télécharger">
+                          <i class="fas fa-download"></i>
+                        </button>
+                        <button class="btn btn-sm btn-danger btn-rounded" (click)="confirmDeleteFile(courrier, 'courrier')" title="Supprimer">
+                          <i class="fas fa-trash-alt"></i>
+                        </button>
+                      </td>
+                    </tr>
+                    <tr *ngIf="courriers.length === 0">
+                      <td colspan="3" class="text-center">Aucun courrier</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <br>
+          </div>
+          <h4 class="mb-0"><strong>Traitement de l'avis</strong></h4>
+          <div class="card-body">
+            <br>
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="mb-3">
+                  <label class="form-label">Assigné à </label>
+                  <input class="form-control" [(ngModel)]="this.priseEncharge.personConcerned" disabled>
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="mb-3">
+                  <label class="form-label">Date prévisionnelle de réponse</label><br />
+                  <div class="mb-3">
+                    <input class="form-control" [(ngModel)]="this.priseEncharge.datePrevisionnelleResponse" disabled>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="mb-3">
+                  <label class="form-label">Date prise en charge</label>
+                  <input class="form-control" [(ngModel)]="this.priseEncharge.datePrisecharge" disabled>
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="mb-3">
+                  <label class="form-label">Type d’avis</label><br />
+                  <div class="mb-3">
+                    <input class="form-control" [value]="priseEncharge.espaceTraitement?.join ? priseEncharge.espaceTraitement.join(', ') : priseEncharge.espaceTraitement" disabled />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <br>
+          </div>
+          <h4 class="mb-0"><strong>Résultat</strong></h4>
+          <div class="card-body">
+            <br>
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="mb-3">
+                  <label class="form-label">Réf avis</label>
+                  <input class="form-control" [(ngModel)]="this.priseEncharge.refAvis" disabled />
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="mb-3">
+                  <label>Date réponse avis</label>
+                  <input class="form-control" [(ngModel)]="this.priseEncharge.dateReponseAvis" disabled />
+                </div>
+              </div>
+              <div class="col-lg-12">
+                <div class="mb-3">
+                  <label>Personnes/Structures ayant contribué</label>
+                  <input class="form-control" [(ngModel)]="this.priseEncharge.observation" disabled />
+                </div>
+              </div>
+            </div>
+            <div class="row" *ngIf="responseFiles.length > 0">
+              <div class="col-lg-12">
+                <div class="mb-3">
+                  <label>Réponse avis</label>
+                  <div *ngFor="let file of responseFiles" class="d-flex align-items-center mb-1">
+                    <button class="btn btn-sm btn-outline-primary btn-rounded me-1" (click)="viewFile(file)" title="Voir">
+                      <i class="fas fa-eye"></i>
+                    </button>
+                    <button class="btn btn-sm btn-info btn-rounded me-1" (click)="downloadFile(file)" title="Télécharger">
+                      <i class="fas fa-download"></i> Télécharger la réponse
+                    </button>
+                    <button class="btn btn-sm btn-danger btn-rounded" (click)="confirmDeleteFile(file, 'response')" title="Supprimer">
+                      <i class="fas fa-trash-alt"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,94 @@
+<form [formGroup]="form">
+  <!-- Date d'échantillonnage espèce 2 -->
+  <div class="row mb-4">
+    <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">Date d’échantillonnage espèce 2</label>
+    <div class="col-sm-9">
+      <input type="date" class="form-control" formControlName="dateEchantillonnageEspece2" />
+    </div>
+  </div>
+
+  <!-- Niveau d'alerte biotoxines -->
+  <div class="row mb-4">
+    <label for="horizontal-email-input" class="col-sm-3 col-form-label">{{"NvAlerte_Biotoxines"|translate}}</label>
+    <div class="col-sm-9">
+      <div class="col-sm-9 d-flex justify-content-start gap-5">
+        <div *ngFor="let option of ['Normale', 'Alerte']; let i = index" class="radio-button">
+          <label class="mr-3">
+            <input type="radio" name="niveauAlerteBiotoxine2" [value]="option" formControlName="niveauAlerteBiotoxine2" />
+            {{ option }}
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Type de test -->
+  <div class="row mb-4">
+    <label for="test-type" class="col-sm-3 col-form-label">{{"Type_de_Test"|translate}}</label>
+    <div class="col-sm-9">
+      <div class="col-sm-9 d-flex justify-content-start gap-5">
+        <div *ngFor="let option of ['Biologique', 'Chimique']; let i = index" class="radio-button">
+          <label class="mr-3">
+            <input type="radio" name="typeTest" [value]="option" formControlName="typeTest" (change)="onTestTypeChange(option)" />
+            {{ option }}
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Conditionally display fields based on 'typeTest' -->
+  <div *ngIf="form.get('typeTest')?.value === 'Biologique'">
+    <div class="row mb-4">
+      <label for="horizontal-password-input" class="col-sm-3 col-form-label">{{"LSP_esp2"|translate}}</label>
+      <div class="col-sm-9">
+        <div class="col-sm-9 d-flex justify-content-start gap-5">
+          <div *ngFor="let option of ['Absence', 'Présence']; let i = index" class="radio-button">
+            <label class="mr-3">
+              <input type="radio" name="lspEspece2" [value]="option" formControlName="lspEspece2" />
+              {{ option }}
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="form.get('typeTest')?.value === 'Chimique'">
+    <div class="row mb-4">
+      <label for="horizontal-password-input" class="col-sm-3 col-form-label">{{"LSP_ac_okad"|translate}}</label>
+      <div class="col-sm-9">
+        <input type="number" class="form-control" formControlName="lsp2AcideOkadaique">
+      </div>
+    </div>
+    <div class="row mb-4">
+      <label for="horizontal-password-input" class="col-sm-3 col-form-label">{{"LSP_ac_azas"|translate}}</label>
+      <div class="col-sm-9">
+        <input type="number" class="form-control" formControlName="lsp2AcideAzaspiracides">
+      </div>
+    </div>
+    <div class="row mb-4">
+      <label for="horizontal-password-input" class="col-sm-3 col-form-label">{{"LSP_yess"|translate}}</label>
+      <div class="col-sm-9">
+        <input type="number" class="form-control" formControlName="lsp2Yessotoxines">
+      </div>
+    </div>
+    <div class="row mb-4">
+      <label for="horizontal-password-input" class="col-sm-3 col-form-label">{{"PSP_espèce2"|translate}}</label>
+      <div class="col-sm-9">
+        <input type="number" class="form-control" formControlName="pspEspece2">
+      </div>
+    </div>
+    <div class="row mb-4">
+      <label for="horizontal-password-input" class="col-sm-3 col-form-label">{{"ASP"|translate}}</label>
+      <div class="col-sm-9">
+        <input type="number" class="form-control" formControlName="asp2">
+      </div>
+    </div>
+  </div>
+
+  <div class="d-flex flex-wrap gap-2">
+    <button type="submit" class="btn btn-primary w-md" (click)="formSaveHandler()">{{"Enre"|translate}}</button>
+    <button type="button" class="btn btn-secondary w-md">{{"Ann"|translate}}</button>
+  </div>
+</form>

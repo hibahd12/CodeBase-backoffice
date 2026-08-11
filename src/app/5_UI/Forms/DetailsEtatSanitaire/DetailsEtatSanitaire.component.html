@@ -1,0 +1,47 @@
+<div class="chat-leftsidebar-nav">
+  <div class="d-flex justify-content-center align-items-center gap-5">
+    <div class="d-flex justify-content-center align-items-center gap-2">
+      <strong>Region : </strong>
+      <span>{{ regionSanitaire?.title }}</span>
+    </div>
+    <div class="d-flex justify-content-center align-items-center gap-2">
+      <strong>Zone : </strong>
+      <span>{{ zoneSanitaire?.title }}</span>
+    </div>
+    <div class="d-flex justify-content-center align-items-center gap-2">
+      <strong>Point de suivi : </strong>
+      <OhmNgSelect [items]="zoneSanitaire?.point_suivi" [placeholder]="pointSuivi.title" [bindLabel]="'title'"
+        [bindValue]="'title'" formControlName="point_suivi" [multiple]="false" [unableAddButton]="false"
+        (eventEmitterOnChange)="onPointSuiviChange($event)" style="width: 200px;" [unableEditButton]="false">
+      </OhmNgSelect>
+    </div>
+  </div>
+  <button class="btn btn-primary my-4" (click)="goBack()">Retour</button>
+  <tabset class="nav-pills nav-justified">
+    <tab heading="Paramètres du Milieu" class="py-4 tab-content">
+      <EtatSanitaireParametresMilieu [pointSuivi]="pointSuivi" [regionSanitaire]="regionSanitaire"
+        [zoneSanitaire]="zoneSanitaire">
+      </EtatSanitaireParametresMilieu>
+    </tab>
+    <tab heading="Contaminants microbiologiques" class="py-4 tab-content">
+      <EtatSanitaireContamiMicro [pointSuivi]="pointSuivi" [regionSanitaire]="regionSanitaire"
+        [zoneSanitaire]="zoneSanitaire"></EtatSanitaireContamiMicro>
+    </tab>
+    <tab heading="Contaminants Chimiques" class="py-4 tab-content">
+      <EtatSanitaireContamiChimique [pointSuivi]="pointSuivi" [regionSanitaire]="regionSanitaire"
+        [zoneSanitaire]="zoneSanitaire"></EtatSanitaireContamiChimique>
+    </tab>
+    <tab heading="Phytoplancton" class="py-4 tab-content">
+      <EtatSanitairePhytoplancton [pointSuivi]="pointSuivi" [regionSanitaire]="regionSanitaire"
+        [zoneSanitaire]="zoneSanitaire"></EtatSanitairePhytoplancton>
+    </tab>
+    <tab heading="Biotoxines espèce 1" class="py-4 tab-content">
+      <EtatSanitaireBiotoxineEspece1 [pointSuivi]="pointSuivi" [regionSanitaire]="regionSanitaire"
+        [zoneSanitaire]="zoneSanitaire"></EtatSanitaireBiotoxineEspece1>
+    </tab>
+    <tab heading="Biotoxines espèce 2" class="py-4 tab-content">
+      <EtatSanitaireBiotoxineEspece2 [pointSuivi]="pointSuivi" [regionSanitaire]="regionSanitaire"
+        [zoneSanitaire]="zoneSanitaire"></EtatSanitaireBiotoxineEspece2>
+    </tab>
+  </tabset>
+</div>

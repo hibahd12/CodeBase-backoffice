@@ -1,0 +1,147 @@
+<div>
+  <AvisStepper [currentStep]="2" [completedSteps]="[1]"></AvisStepper>
+  <div class="modal-body">
+    <div class="row">
+      <div class="col-12" *ngIf=this.priseEncharge>
+        <div class="card">
+          <h4 class="mb-0"><strong>Prise en charge</strong></h4>
+          <div class="card-body">
+            <br>
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="mb-3">
+                  <label class="form-label">Date de création</label>
+                  <input class="form-control" [(ngModel)]="this.priseEncharge.dateCreation" disabled>
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="mb-3">
+                  <label class="form-label">Type : </label>
+                  <div class="mb-3">
+                    <input class="form-control" [(ngModel)]="this.priseEncharge.nature" disabled />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="mb-3">
+                  <label class="form-label">Région</label>
+                  <input class="form-control" [(ngModel)]="this.priseEncharge.region" disabled />
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="mb-3">
+                  <label class="form-label">Emetteur</label><br />
+                  <div class="mb-3">
+                    <input class="form-control" [(ngModel)]="this.priseEncharge.emetteur" disabled />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="mb-3">
+                  <label class="form-label">Demandeur initial</label><br />
+                  <div class="mb-3">
+                    <input class="form-control" [(ngModel)]="this.priseEncharge.beneficiaire" disabled />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="table-responsive">
+              <div class="table-responsive mb-0">
+                <table class="table table-centered table-nowrap">
+                  <thead class="table-light">
+                    <tr>
+                      <th class="align-middle">Réf courrier</th>
+                      <th class="align-middle">Date réception</th>
+                      <th class="align-middle">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let courrier of courriers">
+                      <td>{{ courrier?.metadatas?.name }}</td>
+                      <td>{{ courrier?.metadatas?.dateReception }}</td>
+                      <td>
+                        <button class="btn btn-sm btn-outline-primary btn-rounded me-1" (click)="viewFile(courrier)" title="Voir">
+                          <i class="fas fa-eye"></i>
+                        </button>
+                        <button class="btn btn-sm btn-info btn-rounded me-1" (click)="downloadFile(courrier)" title="Télécharger">
+                          <i class="fas fa-download"></i>
+                        </button>
+                        <button class="btn btn-sm btn-danger btn-rounded" (click)="confirmDeleteFile(courrier)" title="Supprimer">
+                          <i class="fas fa-trash-alt"></i>
+                        </button>
+                      </td>
+                    </tr>
+                    <tr *ngIf="courriers.length === 0">
+                      <td colspan="3" class="text-center">Aucun courrier</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <br>
+          </div>
+          <form [formGroup]="traitementAvisBuilder">
+            <h4 class="mb-0"><strong>Traitement de l’avis</strong></h4>
+            <div class="card-body">
+              <br>
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="mb-3">
+                    <label class="form-label">Assigné à </label>
+                  <OhmNgSelect [items]="assignedToOptions"
+                      [bindLabel]="'title'"
+                      [bindValue]="'id'"
+                      (eventEmitterOnAdd)="onAddItem($event)"
+                      (eventEmitterOnChange)="onChangePersonConcerned($event)"
+                      [multiple]="false">
+                    </OhmNgSelect>
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="mb-3">
+                    <label class="form-label">Date prévisionnelle de réponse</label><br />
+                    <div class="mb-3">
+                      <input type="date" class="form-control" formControlName="datePrevisionnelleResponse" />
+                      <div *ngIf="traitementAvisBuilder.get('datePrevisionnelleResponse')?.invalid && traitementAvisBuilder.get('datePrevisionnelleResponse')?.touched" class="text-danger small">
+                        Ce champ est obligatoire
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="mb-3">
+                    <label class="form-label">Date prise en charge</label>
+                    <input type="date" class="form-control" formControlName="datePrisecharge" />
+                    <div *ngIf="traitementAvisBuilder.get('datePrisecharge')?.invalid && traitementAvisBuilder.get('datePrisecharge')?.touched" class="text-danger small">
+                      Ce champ est obligatoire
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="mb-3">
+                    <label class="form-label">Type d’avis</label><br />
+                    <OhmNgSelect [items]="typesAvisOptions"
+                      [bindLabel]="'title'" [bindValue]="'id'"
+                      [entityName]="null"
+                      (eventEmitterOnAdd)="onAddItem($event)" (eventEmitterOnChange)="onChangeStepOfProcessing($event)"
+                      [multiple]="true">
+                    </OhmNgSelect>
+                  </div>
+                </div>
+              </div>
+              <br>
+            </div>
+            <button type="button" class="btn btn-primary me-2" (click)="saveTraitementAvis()">Enregistrer traitement de
+              l’avis</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

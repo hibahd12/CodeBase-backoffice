@@ -1,0 +1,116 @@
+<div>
+  <div class="modal-body">
+    <div class="row">
+      <div class="col-12">
+        <div class="card">
+          <h4 class="mb-0"><strong>Prise en charge</strong></h4>
+          <div class="card-body">
+            <br>
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="mb-3">
+                  <label class="form-label">Date de création</label>
+                  <input class="form-control" [(ngModel)]="Date" disabled>
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="mb-3">
+                  <label class="form-label">Type : </label>
+                  <div class="mb-3">
+                    <input class="form-control" [(ngModel)]="nature" disabled />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="mb-3">
+                  <label class="form-label">Région</label>
+                  <input class="form-control" [(ngModel)]="region" disabled />
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="mb-3">
+                  <label class="form-label">Emetteur</label><br />
+                  <div class="mb-3">
+                    <input class="form-control" [(ngModel)]="Emetteur" disabled />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="mb-3">
+                  <label class="form-label">Demandeur initial</label><br />
+                  <div class="mb-3">
+                    <input class="form-control" [(ngModel)]="beneficiaire" disabled />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <br>
+          </div>
+          <h4 class="mb-0"><strong>Traitement de l’avis</strong></h4>
+          <div class="card-body">
+            <br>
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="mb-3">
+                  <label class="form-label">Assigné à </label>
+                  <ng-select [items]="assignedToOptions"
+                             bindValue="name"
+                             bindLabel="name"
+                             [(ngModel)]="selectedPort">
+                  </ng-select>
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="mb-3">
+                  <label class="form-label">Date prévisionnelle de réponse</label><br />
+                  <div class="mb-3">
+                    <input type="date" class="form-control" [(ngModel)]="dateResponse">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="mb-3">
+                  <label class="form-label">Date prise en charge</label>
+                  <input type="text" class="form-control" [(ngModel)]="datePrisecharge">
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="mb-3">
+                  <label class="form-label">Type d’avis</label><br />
+                  <div class="mb-3">
+                    <ng-select [items]="typesAvisOptions"
+                               bindValue="id"
+                               bindLabel="name"
+                               [(ngModel)]="espaceTraitement">
+                    </ng-select>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <br>
+          </div>
+          <button type="button" class="btn btn-primary me-2" (click)="SaveTraitementAvis()">Enregistrer traitement de
+            l’avis</button>
+          <!-- <h4 class="mb-0"><strong>Résultat</strong></h4>F
+          <div class="card-body">
+            <br>
+            <label class="form-label">Réf avis</label>
+            <input type="text">
+            <label>Date réponse avis</label>
+            <input type="text">
+            <label>Upload réponse avis</label>
+            <input type="file"><br>
+            <label>Observation</label>
+            <textarea type="text" class="form-control"></textarea>
+          </div>  -->
+        </div> <!-- end card-body -->
+      </div> <!-- end col -->
+    </div>
+  </div>
+</div>

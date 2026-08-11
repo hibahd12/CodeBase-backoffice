@@ -1,0 +1,138 @@
+<div>
+  <AvisStepper [currentStep]="1" [completedSteps]="[]"></AvisStepper>
+  <form [formGroup]="avisScientifiqueFormBuilder" (ngSubmit)="savePrisEnCharge()">
+    <div class="modal-body">
+      <div class="row">
+        <div class="col-12">
+          <div class="card">
+            <h4 class="mb-0"><strong>Prise en charge</strong></h4>
+            <div class="card-body">
+              <br>
+              <div class="row">
+                <div class="row">
+                  <div class="col-lg-6">
+                    <div class="mb-3">
+                      <label>
+                        <input type="radio" name="nature" value="interne" formControlName="nature" />
+                        Interne
+                      </label>
+                      <label class="radio-button">
+                        <input type="radio" name="nature" value="externe" formControlName="nature" />
+                        Externe
+                      </label>
+                      <div *ngIf="avisScientifiqueFormBuilder.get('nature')?.invalid && avisScientifiqueFormBuilder.get('nature')?.touched" class="text-danger small">
+                        Ce champ est obligatoire
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-6">
+                    <div class="mb-3">
+                      <label class="form-label">Date de création<span class="star">*</span></label>
+                      <input class="form-control" id="example-date" formControlName="date" type="date" name="date" />
+                      <div *ngIf="avisScientifiqueFormBuilder.get('date')?.invalid && avisScientifiqueFormBuilder.get('date')?.touched" class="text-danger small">
+                        Ce champ est obligatoire
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-6">
+                    <div class="mb-3">
+                      <label class="form-label">Région<span class="star">*</span></label>
+                      <ng-select [items]="ports"
+                                 bindValue="title"
+                                 bindLabel="title"
+                                 formControlName="region"
+                                 [multiple]="true">
+                      </ng-select>
+                      <div *ngIf="avisScientifiqueFormBuilder.get('region')?.invalid && avisScientifiqueFormBuilder.get('region')?.touched" class="text-danger small">
+                        Ce champ est obligatoire
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-6">
+                    <div class="mb-3">
+                      <label class="form-label">Emetteur<span class="star">*</span></label>
+                      <OhmNgSelect [items]="emetteurs" [bindLabel]="'title'" [bindValue]="'id'"
+                        [entityName]="environment.entityNameEmetteurAvisScientifique" (loadData)="getAllEmetteurs()"
+                        [multiple]="false" (eventEmitterOnAdd)="onAddItem($event)"
+                        (eventEmitterOnChange)="onChangeEmetteur($event)">
+                      </OhmNgSelect>
+                      <div *ngIf="emetteurError" class="text-danger small">
+                        L'émetteur est obligatoire
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-6">
+                    <div class="mb-3">
+                      <label class="form-label">Demandeur initial<span class="star">*</span></label><br />
+                      <div class="mb-3">
+                        <input type="text" class="form-control" formControlName="beneficiaire" />
+                        <div *ngIf="avisScientifiqueFormBuilder.get('beneficiaire')?.invalid && avisScientifiqueFormBuilder.get('beneficiaire')?.touched" class="text-danger small">
+                          Ce champ est obligatoire
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-6">
+                    <div class="mb-3">
+                      <label class="form-label">Sujet<span class="star">*</span></label><br />
+                      <div class="mb-3">
+                        <input type="text" class="form-control" formControlName="sujet" />
+                        <div *ngIf="avisScientifiqueFormBuilder.get('sujet')?.invalid && avisScientifiqueFormBuilder.get('sujet')?.touched" class="text-danger small">
+                          Ce champ est obligatoire
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <table class="table table-striped table-bordered">
+                  <thead>
+                    <tr>
+                      <th>Réf courrier</th>
+                      <th>Date réception</th>
+                      <th>Courrier reçu</th>
+                      <th>Fichier</th>
+                      <th>
+                        <button class="btn btn-success btn-rounded btn-sm" type="button"
+                          (click)="addNewCourrierRow()">+ Ajouter un courrier</button>
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let courrier of listOfCourriers; let i = index">
+                      <td>
+                        <input type="text" required="required" class="form-control" [(ngModel)]="courrier.refCourrier"
+                          [ngModelOptions]="{standalone: true}" placeholder="Réf courrier" />
+                      </td>
+                      <td>
+                        <input type="date" required="required" class="form-control" [(ngModel)]="courrier.dateReception"
+                          [ngModelOptions]="{standalone: true}" />
+                      </td>
+                      <td>
+                        <input type="file" required="required" class="form-control"
+                          (change)="onCourrierSelected($event, i)">
+                      </td>
+                      <td class="text-muted small">
+                        {{ courrier.courrierRecu?.name || 'Aucun fichier' }}
+                      </td>
+                      <td>
+                        <button type="button" class="btn btn-danger btn-rounded btn-sm"
+                          (click)="cancelRow(i)">Annuler</button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <br>
+              </div>
+              <button type="submit" class="btn btn-primary me-2">Enregistrer prise en
+                charge</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

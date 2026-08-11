@@ -1,0 +1,20 @@
+<div class="avis-stepper d-flex align-items-center justify-content-center my-4">
+  <ng-container *ngFor="let step of steps; let last = last">
+    <!-- Step circle -->
+    <div class="step-item d-flex flex-column align-items-center"
+         [class.step-active]="isActive(step.number)"
+         [class.step-completed]="isCompleted(step.number)"
+         [class.step-future]="isFuture(step.number)">
+      <div class="step-circle d-flex align-items-center justify-content-center">
+        <i *ngIf="isCompleted(step.number)" class="fas fa-check"></i>
+        <span *ngIf="!isCompleted(step.number)">{{ step.number }}</span>
+      </div>
+      <span class="step-label mt-2">{{ step.label }}</span>
+    </div>
+    <!-- Connector line -->
+    <div *ngIf="!last" class="step-connector"
+         [class.connector-completed]="isCompleted(step.number)"
+         [class.connector-future]="!isCompleted(step.number)">
+    </div>
+  </ng-container>
+</div>

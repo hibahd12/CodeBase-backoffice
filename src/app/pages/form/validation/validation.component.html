@@ -1,0 +1,77 @@
+<div>
+  <div class="modal-body">
+    <div class="row">
+      <div class="col-12">
+        <div class="card">
+          <h5 class="mb-0">Campagnes</h5>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="mb-3">
+                  <label class="form-label">Date de création</label>
+                  <input class="form-control" id="example-date" [(ngModel)]="Date" type="date" name="date">
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="mb-3">
+                  <label class="form-label">Type</label>
+                  <ng-select [items]="typeAlertes" [(ngModel)]="selectedType" bindValue="id"
+                    bindLabel="name"></ng-select>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="mb-3">
+                  <label class="form-label">Date début</label>
+                  <input class="form-control" id="example-date" type="date" name="date">
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="mb-3">
+                  <label class="form-label">Date fin</label>
+                  <input class="form-control" id="example-date" type="date" name="date">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="mb-3">
+                  <label class="form-label">Région</label>
+                  <ng-select [items]="Ports" bindValue="name" bindLabel="name" [(ngModel)]="selectedPort">
+                  </ng-select>
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="mb-3">
+                  <label class="form-label">Engins</label>
+                  <ng-select bindValue="id" bindLabel="name"></ng-select>
+                </div>
+              </div>
+            </div>
+            <h6>Itinéraire ? Si oui format carte ou points de passages nommé ou coordonnées gps…
+            </h6>
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="mb-3">
+                  <label class="col-md-3 col-form-label">Objectifs</label>
+                  <div class="col-md-9">
+                    <textarea class="form-control" [(ngModel)]="Objectif"></textarea>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="mb-3">
+                  <label class="form-label">Remarque</label>
+                  <div class="col-md-9">
+                    <textarea class="form-control" [(ngModel)]="Remarque"></textarea>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div> <!-- end card-body -->
+        </div> <!-- end card-->
+      </div> <!-- end col -->
+    </div>
+  </div>
+</div>

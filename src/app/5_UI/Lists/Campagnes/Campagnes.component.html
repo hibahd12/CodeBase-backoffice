@@ -1,0 +1,72 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-body">
+          <div class="row mb-2">
+            <div class="col-sm-4">
+              <div class="search-box me-2 mb-2 d-inline-block">
+                <div class="position-relative">
+                  <h2 class="titre-h2 titre-table mar-bott-20">Campagnes</h2>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-8">
+              <div class="text-sm-end">
+                <button type="button" class="btn btn-success btn-rounded mb-2 me-2"
+                  (click)="NavigateToForm('Sys_FrmCampagnes')"><i class="mdi mdi-plus mr-1"></i>
+                  Ajouter campagne</button>
+              </div>
+            </div>
+          </div>
+          <div class="table-responsive">
+            <div class="table-responsive mb-0">
+              <table class="table table-centered table-nowrap">
+                <thead class="table-light">
+                  <tr>
+                    <th>Navire</th>
+                    <th>Date de création</th>
+                    <th>Type</th>
+                    <th>Date début</th>
+                    <th>Date fin</th>
+                    <th>Région</th>
+                    <th>Objectifs</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let campagne of dataGrid">
+                    <td>{{ campagne?.navire }}</td>
+                    <td>{{ campagne?.dateCreation }}</td>
+                    <td>{{ campagne?.type }}</td>
+                    <td>{{ campagne?.dateDebut }}</td>
+                    <td>{{ campagne?.dateFin }}</td>
+                    <td>
+                      <span [title]="campagne?.region">
+                        {{ campagne?.region.length > 15 ? (campagne?.region | slice:0:15) + '...' : campagne?.region }}
+                      </span>
+                    </td>
+                    <td>
+                      <span [title]="campagne?.objectif">
+                        {{ campagne?.objectif?.length > 40 ? (campagne?.objectif | slice:0:40) + '...' :
+                        campagne?.objectif }}
+                      </span>
+                    </td>
+                    <td>
+                      <button type="button" class="btn btn-info btn-sm btn-rounded mb-2 me-2"
+                        (click)="openForm('Sys_FrmCampagnes', campagne)">
+                        <i class="fas fa-folder-open"></i>
+                        Voir</button>
+                      <button type="button" class="btn btn-danger btn-sm btn-rounded mb-2 me-2"
+                        (click)="deleteCampagnes(campagne)"><i class="fas fa-trash-alt"></i></button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

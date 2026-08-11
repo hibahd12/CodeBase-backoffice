@@ -1,0 +1,70 @@
+<div class="container-fluid">
+  <div class="row">
+      <div class="col-12">
+          <div class="card">
+              <div class="card-body">
+                  <div class="row mb-2">
+                      <div class="col-sm-4">
+                          <div class="search-box me-2 mb-2 d-inline-block">
+                              <div class="position-relative">
+                                  <h2 class="titre-h2 titre-table mar-bott-20">Etat sanitaire</h2>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="col-sm-4">
+                          <div class="text-sm-end">
+                              <button type="button" class="btn btn-success btn-rounded mb-2 me-2"
+                              (click)="NavigateToForm('Sys_FrmEtatSanitaire')">
+                                  Mettre à jour une état sanitaire</button>
+                          </div>
+                      </div>
+                      <div class="col-sm-4">
+                        <div class="text-sm-end">
+                            <button type="button" class="btn btn-success btn-rounded mb-2 me-2"
+                            [disabled]="isExporting"
+                            (click)="loadAllDataForExport()">
+                           {{isExporting ? 'Exportation en cours...' :'Exporter historique'}}</button>
+                        </div>
+                    </div>
+                  </div>
+                  <div class="table-responsive">
+                      <div class="table-responsive mb-0">
+                          <table class="table table-centered table-nowrap">
+                              <thead class="table-light">
+                                  <tr>
+                                      <th>date</th>
+                                      <th>Region</th>
+                                      <th>Zones</th>
+                                      <th>Statut sanitaire</th>
+                                  </tr>
+                              </thead>
+                              <tbody>
+                                <ng-container *ngFor="let etatSanitaire of (dataGrid | paginate : { itemsPerPage: pageSize, currentPage: currentPage, totalItems : 1000 })">
+                                    <tr *ngFor="let zone of etatSanitaire.args.entityChanges.zones">
+                                        <td>{{ etatSanitaire.dateAction | date: 'dd/MM/yyyy HH:mm:ss' }}</td>
+                                        <td>{{ etatSanitaire.args.entityChanges.title }}</td>
+                                        <td>{{ zone.title }}</td>
+                                        <td>{{ zone.statutSanitaire }}</td>
+                                    </tr>
+                                </ng-container>
+                              </tbody>
+                          </table>
+                          <div class="pagination-controls">
+                            <button class="btn btn-success btn-rounded mb-2 me-2" (click)="onPageChange(currentPage - 1)" [disabled]="currentPage === 0">
+                                {{"pagePrecedente" | translate}}
+                            </button>
+                            <span class="mx-2">{{ currentPage + 1}}</span>
+                            <button class="btn btn-success btn-rounded mb-2 me-2" (click)="onPageChange(currentPage + 1)" [disabled]="dataGrid.length < pageSize">
+                                {{"pageSuivante" | translate}}
+                            </button>
+                            <!-- <pagination-controls [previousLabel]="'previousPage' | translate"
+                            [nextLabel]="'nextPage' | translate"
+                            (pageChange)="onPageChange($event)"></pagination-controls> -->
+                        </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>

@@ -1,0 +1,137 @@
+<div>
+    <div class="modal-body">
+        <form [formGroup]="demandeAlertBuilder">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row" *ngIf="idtype==environment.idTypeSanitaire">
+                                <div class="col-lg-6">
+                                    <div class="mb-3">
+                                        <label>
+                                            <input type="radio" name="statutAlerte" value="prealerte"
+                                                formControlName="statutAlerte" />
+                                            {{"Préalerte"|translate}}
+                                        </label>
+                                        <label class="radio-button">
+                                            <input type="radio" name="statutAlerte" value="alerte"
+                                                formControlName="statutAlerte" />
+                                            {{"Alerte"|translate}}
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mt-3">
+                                <div class="col-lg-6">
+                                    <div class="mb-3">
+                                        <label class="form-label">
+                                            {{"Catégorie"|translate}}
+                                            <span class="star">*</span></label>
+                                        <div class="mb-3">
+                                            <OhmNgSelect [items]="categories" [placeholder]="'Category'"
+                                                [bindLabel]="'title'" [bindValue]="'id'"
+                                                (loadData)="getCategory()"
+                                                [entityName]="environment.entityNameCategoryAlerte"
+                                                (eventEmitterOnChange)="onCategoryChange($event)"
+                                                (eventEmitterOnAdd)="onAddItem($event)"
+                                                [unableAddButton]="true" [multiple]="false"
+                                                [(ngModel)]="selectedCategory">
+                                            </OhmNgSelect>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6" *ngIf="selectedCategory==environment.idCategoryBiotoxine">
+                                    <div class="mb-3">
+                                        <label class="form-label">
+                                            {{"Sous_categorie"|translate}}
+                                            <span class="star">*</span></label>
+                                        <div class="mb-3">
+                                            <OhmNgSelect [items]="sousCategories" [placeholder]="'Sous category'"
+                                                [entityName]="environment.entityNameCategoryAlerte"
+                                                (eventEmitterOnAdd)="onAddSousCategory($event)"
+                                                (loadData)="getSousCategory()" [noBindLabel]="true"
+                                                formControlName="sousCategorie" [multiple]="false"
+                                                (eventEmitterOnChange)="onCategoryChange($event)">
+                                            </OhmNgSelect>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="mb-3">
+                                        <label class="form-label">{{"Date" | translate}} <span class="star">*</span></label>
+                                        <input class="form-control" id="example-date" formControlName="dateAlerte"
+                                            type="date" name="date" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mt-3" *ngIf="idtype==environment.idTypeSanitaire">
+                                <div class="col-lg-6">
+                                    <div class="mb-3">
+                                        <label>
+                                            <input type="radio" name="nature" value="publique"
+                                                formControlName="nature" />
+                                            {{"publique"|translate}}
+                                        </label>
+                                        <label class="radio-button">
+                                            <input type="radio" name="nature" value="scientifique"
+                                                formControlName="nature" />
+                                            {{"Scientifique"|translate}}
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mt-3" *ngIf="idtype==environment.idTypeEnvironnement">
+                                <div class="col-lg-6">
+                                    <div class="mb-3">
+                                        <label>
+                                            <input type="radio" name="statut" value="Alerte" formControlName="statut" />
+                                            {{"Alerte"|translate}}
+                                        </label>
+                                        <label class="radio-button">
+                                            <input type="radio" name="statut" value="observationEnMer"
+                                                formControlName="statut" />
+                                            {{"Observ_mer"|translate}}
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="mb-3">
+                                        <label class="form-label">
+                                            {{"Service_emetteur"|translate}}
+                                            <span class="star">*</span></label><br />
+                                        <div class="mb-3">
+                                            <div class="force-to-the-bottom">
+                                                <OhmNgSelect [items]="listAllEmetteurs" [placeholder]="'Emetteur'"
+                                                    [entityName]="environment.entityNameEmetteurAlerte"
+                                                    (loadData)="getAllEmetteurs()" [bindLabel]="'title'"
+                                                    [bindValue]="'id'" (eventEmitterOnAdd)="onAddItem($event)"
+                                                    (eventEmitterOnChange)="onEmitteurChange($event)"
+                                                    [ngModelOptions]="{standalone: true}"
+                                                    [(ngModel)]="selectedEmetteurs">
+                                                </OhmNgSelect>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <div *ngIf="idtype==environment.idTypeSanitaire">
+            <FrmAlertSanitaire [category]="category" [emetteur]="emetteur"
+                [dateAlerte]="demandeAlertBuilder.get('dateAlerte').value"
+                [statutAlerte]="demandeAlertBuilder.get('statutAlerte').value"
+                [nature]="demandeAlertBuilder.get('nature').value">
+            </FrmAlertSanitaire>
+        </div>
+        <div *ngIf="idtype==environment.idTypeEnvironnement">
+            <FrmAlertEnvironnement [dateAlerte]="demandeAlertBuilder.get('dateAlerte').value"
+                [nature]="demandeAlertBuilder.get('nature').value" [category]="category" [emetteur]="emetteur">
+            </FrmAlertEnvironnement>
+        </div>
+    </div>
+</div>

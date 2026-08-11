@@ -1,0 +1,31 @@
+<form [formGroup]="form">
+  <div class="row mb-4">
+    <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">{{"Date_échanti"|translate}}</label>
+    <div class="col-sm-9">
+      <input type="date" class="form-control" formControlName="dateEchantillonnageMicro">
+    </div>
+  </div>
+  <div class="row mb-4">
+    <label for="horizontal-email-input" class="col-sm-3 col-form-label">{{"NVAl_E.COLI"|translate}}</label>
+    <div class="col-sm-9">
+      <div class="col-sm-9 d-flex justify-content-start gap-5">
+        <div *ngFor="let option of ['Normale', 'Alerte']; let i = index" class="radio-button">
+          <label class="mr-3">
+            <input type="radio" name="niveauAlerteEcoli" [value]="option" formControlName="niveauAlerteEcoli" />
+            {{ option }}
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row mb-4">
+    <label for="horizontal-password-input" class="col-sm-3 col-form-label">{{"E.COLI"|translate}}</label>
+    <div class="col-sm-9">
+      <input type="number" class="form-control" formControlName="escherichiaColi">
+    </div>
+  </div>
+  <div class="d-flex flex-wrap gap-2">
+    <button type="submit" class="btn btn-primary w-md" (click)="formSaveHandler()">{{"Enre"|translate}}</button>
+    <button type="submit" class="btn btn-secondary w-md">{{"Ann"|translate}}</button>
+  </div>
+</form>

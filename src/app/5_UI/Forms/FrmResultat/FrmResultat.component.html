@@ -1,0 +1,135 @@
+<div class="container-fluid">
+  <AvisStepper [currentStep]="3" [completedSteps]="[1, 2]"></AvisStepper>
+  <div class="row justify-content-center">
+    <div class="col-12 col-lg-10 col-xl-8" *ngIf=this.priseEncharge>
+      <div class="card">
+          <h4 class="mb-0"><strong>Prise en charge</strong></h4>
+          <div class="card-body">
+            <br>
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="mb-3">
+                  <label class="form-label">Date de création</label>
+                  <input class="form-control" [(ngModel)]="this.priseEncharge.dateCreation" disabled>
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="mb-3">
+                  <label class="form-label">Type : </label>
+                  <div class="mb-3">
+                    <input class="form-control" [(ngModel)]="this.priseEncharge.nature" disabled />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="mb-3">
+                  <label class="form-label">Région</label>
+                  <input class="form-control" [(ngModel)]="this.priseEncharge.region" disabled />
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="mb-3">
+                  <label class="form-label">Emetteur</label><br />
+                  <div class="mb-3">
+                    <input class="form-control" [(ngModel)]="this.priseEncharge.emetteur" disabled />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="mb-3">
+                  <label class="form-label">Demandeur initial</label><br />
+                  <div class="mb-3">
+                    <input class="form-control" [(ngModel)]="this.priseEncharge.beneficiaire" disabled />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <br>
+          </div>
+          <h4 class="mb-0"><strong>Traitement de l’avis</strong></h4>
+          <div class="card-body">
+            <br>
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="mb-3">
+                  <label class="form-label">Assigné à </label>
+                  <input class="form-control" [(ngModel)]="this.priseEncharge.personConcerned" disabled>
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="mb-3">
+                  <label class="form-label">Date prévisionnelle de réponse</label><br />
+                  <div class="mb-3">
+                    <input class="form-control" [(ngModel)]="this.priseEncharge.datePrevisionnelleResponse" disabled>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="mb-3">
+                  <label class="form-label">Date prise en charge</label>
+                  <input class="form-control" [(ngModel)]="this.priseEncharge.datePrisecharge" disabled>
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="mb-3">
+                  <label class="form-label">Type d’avis</label><br />
+                  <div class="mb-3">
+                    <input class="form-control" [value]="priseEncharge.espaceTraitement?.join ? priseEncharge.espaceTraitement.join(', ') : priseEncharge.espaceTraitement" disabled />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <br>
+          </div>
+          <form [formGroup]="resultatBuilder">
+            <h4 class="mb-0"><strong>Résultat</strong></h4>
+            <div class="card-body">
+              <br>
+              <div class="row">
+                <div class="col-lg-4">
+                  <div class="mb-3">
+                    <label class="form-label">Réf avis<span class="star">*</span></label>
+                    <input type="text" formControlName="referenceAvis" class="form-control" />
+                    <div *ngIf="resultatBuilder.get('referenceAvis')?.invalid && resultatBuilder.get('referenceAvis')?.touched" class="text-danger small">
+                      Ce champ est obligatoire
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-4">
+                  <div class="mb-3">
+                    <label>Date réponse avis<span class="star">*</span></label>
+                    <input type="date" formControlName="dateReponseAvis" class="form-control" />
+                    <div *ngIf="resultatBuilder.get('dateReponseAvis')?.invalid && resultatBuilder.get('dateReponseAvis')?.touched" class="text-danger small">
+                      Ce champ est obligatoire
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-4">
+                  <div class="mb-3">
+                    <label>Upload réponse avis</label>
+                    <input type="file" required="required" class="form-control"
+                      (change)="onResponseAvisSelected($event)">
+                  </div>
+                </div>
+              </div>
+              <label>Personnes/Structures ayant contribué<span class="star">*</span></label>
+              <textarea type="text" class="form-control" formControlName="observation"></textarea>
+              <div *ngIf="resultatBuilder.get('observation')?.invalid && resultatBuilder.get('observation')?.touched" class="text-danger small">
+                Ce champ est obligatoire
+              </div>
+            </div>
+            <div class="d-flex justify-content-end mt-3 mb-3">
+            <button type="button" class="btn btn-secondary me-2" (click)="router.navigate(['AvisScientifiques'])">Annuler</button>
+            <button type="button" class="btn btn-primary" (click)="saveResultat()">Enregistrer Résultat</button>
+          </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>

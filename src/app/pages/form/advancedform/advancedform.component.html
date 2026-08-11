@@ -1,0 +1,107 @@
+<div>
+  <div class="modal-body">
+    <div class="row">
+      <div class="col-12">
+        <div class="card">
+          <h4 class="mb-0"><strong>Prise en charge</strong></h4>
+          <div class="card-body">
+            <br>
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="mb-3">
+                  <label class="form-label">Date de création</label>
+                  <input class="form-control" id="example-date" [(ngModel)]="Date" type="date" name="date">
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="mb-3">
+                  <label class="form-label">Type : </label>
+                  <label>
+                    <input type="radio" name="gender" value="interne" [(ngModel)]="nature" />
+                    Interne
+                  </label>
+                  <label>
+                    <input type="radio" name="gender" value="externe" [(ngModel)]="nature" />
+                    Externe
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="mb-3">
+                  <label class="form-label">Région</label>
+                  <ng-select [items]="Ports" bindValue="name" bindLabel="name" [(ngModel)]="selectedPort">
+                  </ng-select>
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="mb-3">
+                  <label class="form-label">Emetteur</label><br />
+                  <div class="mb-3">
+                    <ng-select [items]="Emetteurs" [(ngModel)]="Emetteur" bindValue="id" bindLabel="name"></ng-select>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="mb-3">
+                  <label class="form-label">Demandeur initial</label><br />
+                  <div class="mb-3">
+                    <input type="text" class="form-control" [(ngModel)]="beneficiaire" />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <table>
+              <thead>
+                <tr>
+                  <th class="sorting_asc">Réf courrier</th>
+                  <th class="sorting_asc">Sujet</th>
+                  <th class="sorting_asc">Date réception</th>
+                  <th class="sorting_asc">Courrier reçu</th>
+                </tr>
+              </thead>
+              <tbody>
+                <td>
+                  <input type="text" required="required" class="form-control" [(ngModel)]="Ref_courrier">
+                </td>
+                <td>
+                  <input type="text" required="required" class="form-control" [(ngModel)]="Sujet">
+                </td>
+                <td>
+                  <input type="text" required="required" class="form-control" [(ngModel)]="Date_reception">
+                </td>
+                <td>
+                  <input type="file" required="required" class="form-control" [(ngModel)]="Courrier_recu">
+                </td>
+                <a class="btn-l-black" href="javascript:void(0);" (click)="AddnewRow()"><i
+                    class="fa fa-solid fa-plus"></i></a>
+                <tr *ngFor="let PriseEnCharge of ListPriseEnCharge">
+                  <td>
+                    <input type="text" required="required" class="form-control"
+                      [(ngModel)]="PriseEnCharge.ref_courrier">
+                  </td>
+                  <td>
+                    <input type="text" required="required" class="form-control" [(ngModel)]="PriseEnCharge.sujet">
+                  </td>
+                  <td>
+                    <input type="text" required="required" class="form-control"
+                      [(ngModel)]="PriseEnCharge.date_reception">
+                  </td>
+                  <td>
+                    <input type="file" required="required" class="form-control"
+                      [(ngModel)]="PriseEnCharge.courrier_recu">
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <br>
+            <button type="button" class="btn btn-primary me-2" (click)="SavePrisEnCharge()">Enregistrer prise en charge</button>
+          </div>
+        </div> <!-- end card-body -->
+      </div> <!-- end col -->
+    </div>
+  </div>
+</div>

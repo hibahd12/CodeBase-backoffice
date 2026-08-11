@@ -1,0 +1,82 @@
+.avis-stepper {
+  padding: 16px 0;
+
+  .step-item {
+    position: relative;
+    min-width: 100px;
+  }
+
+  .step-circle {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 16px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+  }
+
+  .step-label {
+    font-size: 13px;
+    text-align: center;
+    white-space: nowrap;
+  }
+
+  // Active step
+  .step-active .step-circle {
+    background-color: #556ee6;
+    color: #fff;
+    border: 3px solid #556ee6;
+  }
+
+  .step-active .step-label {
+    color: #556ee6;
+    font-weight: 700;
+  }
+
+  // Completed step
+  .step-completed .step-circle {
+    background-color: #34c38f;
+    color: #fff;
+    border: 3px solid #34c38f;
+  }
+
+  .step-completed .step-label {
+    color: #34c38f;
+    font-weight: 600;
+  }
+
+  // Future step
+  .step-future .step-circle {
+    background-color: #fff;
+    color: #adb5bd;
+    border: 2px solid #ced4da;
+  }
+
+  .step-future .step-label {
+    color: #adb5bd;
+    font-weight: 400;
+  }
+
+  // Connectors
+  .step-connector {
+    flex: 1;
+    height: 3px;
+    min-width: 60px;
+    margin: 0 8px;
+    margin-bottom: 28px; // align with circle center
+  }
+
+  .connector-completed {
+    background-color: #34c38f;
+  }
+
+  .connector-future {
+    background: repeating-linear-gradient(
+      90deg,
+      #ced4da 0px,
+      #ced4da 6px,
+      transparent 6px,
+      transparent 12px
+    );
+  }
+}

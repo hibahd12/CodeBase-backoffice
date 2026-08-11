@@ -1,0 +1,343 @@
+<div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Date</label>
+                                    <input class="form-control" id="example-date" [(ngModel)]="Date" type="date"
+                                        name="date">
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Emetteur</label><br />
+                                    <div class="mb-3">
+                                        <ng-select [items]="Emetteurs" [(ngModel)]="Emetteur" bindValue="id"
+                                            bindLabel="name"></ng-select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="mb-3">
+                                    <label>
+                                        <input type="radio" name="gender" value="publique" [(ngModel)]="nature" />
+                                        publique
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="gender" value="Scientifique" [(ngModel)]="nature" />
+                                        Scientifique
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Type</label>
+                                    <!-- <button type="button" class="btn btn-primary me-2"
+                                                (click)="AddnewTypeAlert(content)">Add</button> -->
+                                    <ng-select [items]="typeAlertes" [(ngModel)]="selectedType" bindValue="id"
+                                        bindLabel="name" (change)="onTabChangeType($event)"></ng-select>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Catégorie</label><br />
+                                    <div class="mb-3">
+                                        <ng-select [items]="Categories" [(ngModel)]="category" bindValue="id"
+                                            bindLabel="name" (change)="onTabChangeCategory($event)"></ng-select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> <!-- end card-body -->
+                </div> <!-- end card-->
+            </div> <!-- end col -->
+        </div>
+        <div *ngIf="selectedType?.startsWith('Sanitaire')">
+            <div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="mb-3">
+                                                <label class="form-label">Especes</label>
+                                                <ng-select [items]="Species" bindValue="common_name"
+                                                    bindLabel="common_name" [(ngModel)]="selectedSpecie">
+                                                </ng-select>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="mb-3">
+                                                <label class="form-label">Lieux</label><br />
+                                                <ng-select [items]="Ports" bindValue="name" bindLabel="name"
+                                                    [(ngModel)]="selectedPort">
+                                                </ng-select>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3">
+                                            <label class="col-md-3 col-form-label">Observation</label>
+                                            <div class="col-md-9">
+                                                <textarea class="form-control" [(ngModel)]="observation"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="row mb-3">
+                                        <div class="col-md-10">
+                                            <button type="button" class="btn btn-primary me-2"
+                                                (click)="SaveAlert()">Enregistrer
+                                                Alerte</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> <!-- end card-body -->
+                        </div> <!-- end card-->
+                    </div> <!-- end col -->
+                </div>
+            </div>
+        </div>
+        <div *ngIf="selectedType?.startsWith('Environnement')">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title mb-4">Fiche événement</h4>
+                    <aw-wizard [navBarLayout]="'large-empty-symbols'">
+                        <aw-wizard-step stepTitle="Fiche événement">
+                            <ng-template awWizardStepSymbol>1</ng-template>
+                            <div>
+                                <div class="modal-body">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <div class="row">
+                                                        <div class="col-lg-6">
+                                                            <div class="mb-3">
+                                                                <label class="form-label">Donneur d'alerte</label>
+                                                                <ng-select bindValue="id" bindLabel="name"></ng-select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-6">
+                                                            <div class="mb-3">
+                                                                <label class="form-label">Date et Heure
+                                                                    decouverte</label><br />
+                                                                <input class="form-control" type="datetime-local" id="meeting-time"
+                                                                name="meeting-time">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-6">
+                                                            <div class="mb-3">
+                                                                <label class="form-label">Especes</label>
+                                                                <ng-select [items]="Species" bindValue="common_name"
+                                                                    bindLabel="common_name"
+                                                                    [(ngModel)]="selectedSpecie">
+                                                                </ng-select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-6">
+                                                            <div class="mb-3">
+                                                                <label class="form-label">Lieux</label><br />
+                                                                <ng-select [items]="Ports" bindValue="name"
+                                                                    bindLabel="name" [(ngModel)]="selectedPort">
+                                                                </ng-select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-6">
+                                                            <div class="mb-3">
+                                                                <label class="form-label">Presents</label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-6">
+                                                            <div class="mb-3">
+                                                                <label class="form-label">Intervenant</label><br />
+                                                            </div>
+                                                        </div>
+                                                        <div class="row mb-3">
+                                                            <label class="col-md-3 col-form-label">Localisation</label>
+                                                            <div class="col-md-9">
+                                                                <textarea class="form-control"></textarea>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div> <!-- end card-body -->
+                                        </div> <!-- end card-->
+                                    </div> <!-- end col -->
+                                </div>
+                            </div>
+                            <ul class="list-inline wizard mb-0">
+                                <li class="next list-inline-item float-end"><button class="btn btn-primary"
+                                        awNextStep>Next</button>
+                                </li>
+                            </ul>
+                        </aw-wizard-step>
+                        <aw-wizard-step stepTitle="Fiche d'éspece concernée">
+                            <ng-template awWizardStepSymbol>2</ng-template>
+                            <div class="modal-body">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="row mb-3">
+                                            <label class="col-md-3 col-form-label">Espece</label>
+                                            <div class="col-md-9">
+                                                <ng-select [items]="Species" bindValue="id"
+                                                    bindLabel="common_name"></ng-select>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3">
+                                            <label class="col-md-3 col-form-label">Sexe</label>
+                                            <div class="col-md-9">
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio"
+                                                        name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                                                    <label class="form-check-label" for="inlineRadio1">Male</label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio"
+                                                        name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                                                    <label class="form-check-label" for="inlineRadio2">Female</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3">
+                                            <label class="col-md-3 col-form-label">Mesure/nombre</label>
+                                            <div class="col-md-9">
+                                                <select class="form-select" id="example-select">
+                                                    <option>Mesure</option>
+                                                    <option>2</option>
+                                                    <option>3</option>
+                                                    <option>4</option>
+                                                    <option>5</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3">
+                                            <label class="col-md-3 col-form-label">Type d'intervention</label>
+                                            <div class="col-md-9">
+                                                <select class="form-select" id="example-select">
+                                                    <option>intervention</option>
+                                                    <option>2</option>
+                                                    <option>3</option>
+                                                    <option>4</option>
+                                                    <option>5</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3">
+                                            <label class="col-md-3 col-form-label">Autres observations</label>
+                                            <div class="col-md-9">
+                                                <select class="form-select" id="example-select">
+                                                    <option>observation</option>
+                                                    <option>2</option>
+                                                    <option>3</option>
+                                                    <option>4</option>
+                                                    <option>5</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <ul class="list-inline wizard mb-0">
+                                <li class="previous list-inline-item"><button class="btn btn-primary"
+                                        awPreviousStep>Previous</button>
+                                </li>
+                                <li class="next list-inline-item float-end"><button class="btn btn-primary"
+                                        awNextStep>Next</button>
+                                </li>
+                            </ul>
+                        </aw-wizard-step>
+                    </aw-wizard>
+                </div>
+                <div class="row">
+                    <div class="row mb-3">
+                        <div class="col-md-10">
+                            <button type="button" class="btn btn-primary me-2" (click)="SaveAlert()">Enregistrer
+                                Alerte</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="selectedType?.startsWith('Risque')">
+            <div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="mb-3">
+                                                <label class="form-label">Especes</label>
+                                                <ng-select [items]="Species" bindValue="common_name"
+                                                    bindLabel="common_name" [(ngModel)]="selectedSpecie">
+                                                </ng-select>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="mb-3">
+                                                <label class="form-label">Lieux</label><br />
+                                                <ng-select [items]="Ports" bindValue="name" bindLabel="name"
+                                                    [(ngModel)]="selectedPort">
+                                                </ng-select>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3">
+                                            <label class="col-md-3 col-form-label">Observation</label>
+                                            <div class="col-md-9">
+                                                <textarea class="form-control" [(ngModel)]="observation"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="row mb-3">
+                                        <div class="col-md-10">
+                                            <button type="button" class="btn btn-primary me-2"
+                                                (click)="SaveAlert()">Enregistrer
+                                                Alerte</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> <!-- end card-body -->
+                        </div> <!-- end card-->
+                    </div> <!-- end col -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<!-- <ng-template #content role="document" let-modal>
+    <div class="modal-header">
+        <h5 class="modal-title mt-0">Type d'alerte</h5>
+        <button type="button" class="btn-close" aria-hidden="true" (click)="modalRef?.hide()"></button>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-12">
+                <div class="row mb-3">
+                    <label class="col-md-3 col-form-label">Name</label>
+                    <div class="col-md-9">
+                        <input class="form-control" type="text" [(ngModel)]="category">
+                    </div>
+                </div>
+                <button type="button" class="btn btn-primary me-2" (click)="SaveCategory()">Save type</button>
+            </div>
+        </div>
+    </div>
+
+</ng-template> -->

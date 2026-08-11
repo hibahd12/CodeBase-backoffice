@@ -1,0 +1,483 @@
+{
+  "HEADER": {
+    "SEARCH": "Search...",
+    "MEGA_MENU": "Mega Menu",
+    "NOTIFICATIONS": {
+      "TITLE": "Notifications",
+      "VIEW_ALL": "View All",
+      "LOAD_MORE": "View More..",
+      "FIRST": {
+        "TITLE": "Your order is placed",
+        "TEXT": "If several languages coalesce the grammar",
+        "TIME": "3 min ago"
+      },
+      "SECOND": {
+        "TITLE": "James Lemire",
+        "TEXT": "It will seem like simplified English.",
+        "TIME": "1 hours ago"
+      },
+      "THIRD": {
+        "TITLE": "Your item is shipped",
+        "TEXT": "If several languages coalesce the grammar",
+        "TIME": "3 min ago"
+      },
+      "FOUR": {
+        "TITLE": "Salena Layfield",
+        "TEXT": "As a skeptical Cambridge friend of mine occidental.",
+        "TIME": "1 hours ago"
+      }
+    },
+    "SETTINGS": "Settings",
+    "UI": {
+      "TITLE": "UI Components",
+      "LIGHTBOX": "LightBox",
+      "RANGE_SLIDER": "Range Slider",
+      "SWEET_ALERT": "Sweet Alert",
+      "RATING": "Rating",
+      "FORMS": "Forms",
+      "TABLES": "Tables",
+      "CHARTS": "Charts"
+    },
+    "APPLICATIONS": {
+      "TITLE": "Applications",
+      "ECOMMERCE": "Ecommerce",
+      "CALENDAR": "Calendar",
+      "EMAIL": "Email",
+      "PROJECTS": "Projects",
+      "TASKS": "Tasks",
+      "CONTACTS": "Contacts"
+    },
+    "EXTRA_PAGES": {
+      "TITLE": "Extra Pages",
+      "LIGHT_SIDEBAR": "Light Sidebar",
+      "COMPACT_SIDEBAR": "Compact Sidebar",
+      "HORIZONTAL_LAYOUT": "Horizontal layout",
+      "MAINTENANCE": "Maintenance",
+      "COMING SOON": "Coming Soon",
+      "TIMELINE": "Timeline",
+      "FAQ": "FAQs"
+    },
+    "LOGIN": {
+      "PROFILE": "Profile",
+      "MY_WALLET": "My Wallet",
+      "SETTINGS": "Settings",
+      "LOCK_SCREEN": "Lock screen",
+      "LOGOUT": "Logout"
+    }
+  },
+  "MENUITEMS": {
+    "MENU": {
+      "TEXT": "Menu"
+    },
+    "DASHBOARDS": {
+      "TEXT": "Dashboards",
+      "BADGE": "04",
+      "LIST": {
+        "DEFAULT": "Default",
+        "SAAS": "Saas",
+        "CRYPTO": "Crypto",
+        "BLOG": "Blog",
+        "JOBS": "Jobs"
+      }
+    },
+    "LAYOUTS": {
+      "TEXT": "Layouts",
+      "LIST": {
+        "HORIZONTAL": "Horizontal",
+        "LIGHTSIDEBAR": "Light Sidebar",
+        "COMPACTSIDEBAR": "Compact Sidebar",
+        "ICONSIDEBAR": "Icons Sidebar",
+        "BOXED": "Boxed Layout",
+        "COLOREDSIDEBAR": "Colored Sidebar",
+        "VERTICAL": "Vertical",
+        "LIGHTTOPBAR": "Light Topbar",
+        "COLOREDHEADER": "Colored Header",
+        "SCROLLABLE": "Scrollable"
+      }
+    },
+    "APPS": {
+      "TEXT": "Apps"
+    },
+    "CALENDAR": {
+      "TEXT": "Calendar"
+    },
+    "CHAT": {
+      "TEXT": "Chat",
+      "BADGE": "New"
+    },
+    "FILEMANAGER": {
+      "TEXT": "File Manager",
+      "BADGE": "New"
+    },
+    "ECOMMERCE": {
+      "TEXT": "Ecommerce",
+      "LIST": {
+        "PRODUCTS": "Products",
+        "PRODUCTDETAIL": "Product Detail",
+        "ORDERS": "Orders",
+        "CUSTOMERS": "Customers",
+        "CART": "Cart",
+        "CHECKOUT": "Checkout",
+        "SHOPS": "Shops",
+        "ADDPRODUCT": "Add Product"
+      }
+    },
+    "CRYPTO": {
+      "TEXT": "Crypto",
+      "LIST": {
+        "WALLET": "Wallet",
+        "BUY/SELL": "Buy/Sell",
+        "EXCHANGE": "Exchange",
+        "LENDING": "Lending",
+        "ORDERS": "Orders",
+        "KYCAPPLICATION": "KYC Application",
+        "ICOLANDING": "ICO Landing"
+      }
+    },
+    "EMAIL": {
+      "TEXT": "Email",
+      "LIST": {
+        "INBOX": "Inbox",
+        "READEMAIL": "Read Email",
+        "TEMPLATE": {
+          "BADGE": "New",
+          "TEXT": "Template",
+          "LIST": {
+            "BASIC": "Basic Action",
+            "ALERT": "Alert Email",
+            "BILLING": "Billing Email"
+          }
+        }
+      }
+    },
+    "INVOICES": {
+      "TEXT": "Invoices",
+      "LIST": {
+        "INVOICELIST": "Invoice List",
+        "INVOICEDETAIL": "Invoice Detail"
+      }
+    },
+    "PROJECTS": {
+      "TEXT": "Projects",
+      "LIST": {
+        "GRID": "Projects Grid",
+        "PROJECTLIST": "Projects List",
+        "OVERVIEW": "Project Overview",
+        "CREATE": "Create New"
+      }
+    },
+    "TASKS": {
+      "TEXT": "Tasks",
+      "LIST": {
+        "TASKLIST": "Task List",
+        "KANBAN": "Kanban Board",
+        "CREATETASK": "Create Task"
+      }
+    },
+    "CONTACTS": {
+      "TEXT": "Contacts",
+      "LIST": {
+        "USERGRID": "User Grid",
+        "USERLIST": "User List",
+        "PROFILE": "Profile"
+      }
+    },
+    "BLOG": {
+      "TEXT": "Blog",
+      "BADGE": "New",
+      "LIST": {
+        "BLOGLIST": "Blog List",
+        "BLOGGRID": "Blog Grid",
+        "DETAIL": "Blog Details"
+      }
+    },
+    "JOBS": {
+      "TEXT": "Jobs",
+      "BADGE": "New",
+      "LIST": {
+        "JOBLIST": "Job List",
+        "JOBGRID": "Job Grid",
+        "APPLYJOB": "Apply Job",
+        "JOBDETAILS": "Job Details",
+        "JOBCATEGORIES": "Jobs Categories",
+        "CANDIDATE": {
+          "TEXT": "Candidate",
+          "LIST": {
+            "LIST": "List",
+            "OVERVIEW": "Overview"
+          }
+        }
+      }
+    },
+    "PAGES": {
+      "TEXT": "Pages"
+    },
+    "AUTHENTICATION": {
+      "TEXT": "Authentication",
+      "BADGE": "New",
+      "LIST": {
+        "LOGIN": "Login",
+        "LOGIN2": "Login 2",
+        "REGISTER": "Register",
+        "REGISTER2": "Register 2",
+        "RECOVERPWD": "Recover Password",
+        "RECOVERPWD2": "Recover Password 2",
+        "LOCKSCREEN": "Lock screen",
+        "LOCKSCREEN2": "Lock screen 2",
+        "CONFIRMMAIL": "Confirm Mail",
+        "CONFIRMMAIL2": "Confirm Mail 2",
+        "EMAILVERIFICATION": "Email verification",
+        "EMAILVERIFICATION2": "Email verification 2",
+        "TWOSTEPVERIFICATION": "Two step verification",
+        "TWOSTEPVERIFICATION2": "Two step verification 2"
+      }
+    },
+    "UTILITY": {
+      "TEXT": "Utility",
+      "LIST": {
+        "STARTER": "Starter Page",
+        "MAINTENANCE": "Maintenance",
+        "TIMELINE": "Timeline",
+        "FAQS": "FAQs",
+        "PRICING": "Pricing",
+        "ERROR404": "Error 404",
+        "ERROR500": "Error 500"
+      }
+    },
+    "COMPONENTS": {
+      "TEXT": "Components"
+    },
+    "UIELEMENTS": {
+      "TEXT": "UI Elements",
+      "LIST": {
+        "ALERTS": "Alerts",
+        "BUTTONS": "Buttons",
+        "CARDS": "Cards",
+        "CAROUSEL": "Carousel",
+        "DROPDOWNS": "Dropdowns",
+        "GRID": "Grid",
+        "IMAGES": "Images",
+        "LIGHTBOX": "Lightbox",
+        "MODALS": "Modals",
+        "RANGESLIDER": "Range Slider",
+        "PROGRESSBAR": "Progress Bars",
+        "PLACEHOLDER": "Placeholder",
+        "SWEETALERT": "Sweet Alert",
+        "TABS": "Tabs & Accordions",
+        "TYPOGRAPHY": "Typography",
+        "TOASTS": "Toasts",
+        "VIDEO": "Video",
+        "GENERAL": "General",
+        "COLORS": "Colors",
+        "RATING": "Rating",
+        "NOTIFICATION": "Notification",
+        "UTILITIES": "Utilities",
+        "CROPPER": "Image Cropper"
+      }
+    },
+    "FORMS": {
+      "TEXT": "Forms",
+      "BADGE": "09",
+      "LIST": {
+        "ELEMENTS": "Form Elements",
+        "VALIDATION": "Form Validation",
+        "ADVANCED": "Form Advanced",
+        "EDITOR": "Form Editor",
+        "FILEUPLOAD": "Form File Upload",
+        "REPEATER": "Form Repeater",
+        "WIZARD": "Form Wizard",
+        "MASK": "Form Mask",
+        "LAYOUTS": "Form Layouts"
+      }
+    },
+    "TABLES": {
+      "TEXT": "Tables",
+      "LIST": {
+        "BASIC": "Basic Tables",
+        "DataTables": "Data Tables",
+        "EditTableTables": "Editable Table"
+      }
+    },
+    "CHARTS": {
+      "TEXT": "Charts",
+      "LIST": {
+        "APEX": "Apex Chart",
+        "CHARTJS": "Chartjs Chart",
+        "CHARTIST": "Chartist Chart",
+        "ECHART": "E Chart"
+      }
+    },
+    "ICONS": {
+      "TEXT": "Icons",
+      "LIST": {
+        "BOXICONS": "Boxicons",
+        "MATERIALDESIGN": "Material Design",
+        "DRIPICONS": "Dripicons",
+        "FONTAWESOME": "Font Awesome"
+      }
+    },
+    "MAPS": {
+      "TEXT": "Maps",
+      "LIST": {
+        "GOOGLEMAP": "Google Maps",
+        "LEAFLETMAP": "Leaflet Maps"
+      }
+    },
+    "MULTILEVEL": {
+      "TEXT": "Multi Level",
+      "LIST": {
+        "LEVEL1": {
+          "1": "Level 1.1",
+          "2": "Level 1.2",
+          "LEVEL2": {
+            "1": "Level 2.1",
+            "2": "Level 2.2"
+          }
+        }
+      }
+    }
+  },
+  "date_echan1": "Date d’échantillonnage espèce 1",
+  "NvAlerte_Biotoxines": "Niveau d'alerte Biotoxines",
+  "LSP_esp1": "LSP espèce 1",
+  "LSP_ac_okad": "LSP acide okadaique (μg/Kg)",
+  "LSP_ac_azas": "LSP azaspiracides (μg/Kg)",
+  "LSP_yess": "LSP yessotoxines (mg/Kg)",
+  "PSP_espèce1": "PSP espèce 1 (μg STX2HCl /Kg dechair)",
+  "ASP": "ASP (mg AD/kg)",
+  "Enre": "Enregistrer",
+  "Ann": "Annuler",
+  "date_echan2": "Date d’échantillonnage espèce 2",
+  "LSP_esp2": "LSP espèce 2",
+  "PSP_espèce2": "PSP espèce 2 (μg STX2HCl /Kg dechair)",
+  "Date_échanti1": "Date d’échantillonnage 1",
+  "Date_échanti2": "Date d’échantillonnage 2",
+  "Cd": "Cd (mg/kg.PF)",
+  "Pb": "Pb (mg/kg.pf)",
+  "Hg": "Hg (mg/kg.pf)",
+  "∑HAP": "∑ HAP (ng/g pf)",
+  "∑PCB": "∑ PCB (ng/g pf)",
+  "∑dioxines": "∑ dioxines (pg/g pf)",
+  "∑dioxines_PCB_tp_diox": "∑dioxines et PCB type dioxines (pg/gpf)",
+  "NVAl_E.COLI": "Niveau d'alerte E.COLI",
+  "E.COLI": "E.COLI (npp/100g CLI)",
+  "C/N_pt_suivi": "Codes/Noms des points de suivi",
+  "Dt_M.A.J": "Date M.A.J",
+  "Labo_res": "Labo responsable",
+  "Type_Pro": "Type Production",
+  "Esp_cible1": "Espèce cible 1",
+  "Esp_cible2": "Espèce cible 2",
+  "Stt_sani_zone": "Statut sanitaire zone",
+  "Dt_mes_Milieu": "Date mesure Milieu",
+  "Temp": "Température (°C)",
+  "Salinité": "Salinité (S%o)",
+  "pH": "pH",
+  "Ox_dissous": "Oxygène dissous (ml/l)",
+  "NvAl _Phytop": "Niveau d'alerte Phytoplancton",
+  "Esp_respo_préalerte": "Espèces responsables de la préalerte",
+  "Ps-nitz_spp": "Pseudo-nitzschia spp (Cellule/Litre)",
+  "Dino_spp": "Dinophysis spp (Cellule/Litre)",
+  "Pror_lima": "Prorocentrum lima (Cellule/Litre)",
+  "Alexa_spp": "Alexandrium spp (Cellule/Litre)",
+  "Proto_reti": "Protoceratium reticulatum (Cellule/Litre)",
+  "Lingu_poly": "Lingulodinium polyedrum (Cellule/Litre)",
+  "Gony_spini": "Gonyaulax spinifera (Cellule/Litre)",
+  "Azad_spin": "Azadinium spinosum (Cellule/Litre)",
+  "Gym_caten": "Gymnodinium catenatum (Cellule/Litre)",
+  "Fiche_évenement": "Fiche évenement",
+  "Donneur_Alerte": "Donneur d'alerte",
+  "DateHeure_decouverte": "Date et Heure decouverte",
+  "Lieux": "Lieux",
+  "Presents": "Presents",
+  "Intervenant": "Intervenant",
+  "Tp_intervenant": "Type d'intervention",
+  "Localisation": "Localisation",
+  "Nord": "Nord",
+  "Sud": "Sud",
+  "Next": "Next",
+  "Sexe": "Sexe",
+  "Male": "Male",
+  "Femelle": "Femelle",
+  "Non_identifie": "Non identifié",
+  "Especes": "Especes",
+  "Mesure": "Mesure",
+  "nombre": "nombre",
+  "Ajouter": "Ajouter",
+  "Img_espece": "Image d'espèces",
+  "Choisir_img_Principale": "Choisir image Principale",
+  "Faites_glisser": "Faites glisser",
+  "Ou": "Ou",
+  "Choisir_img": "Choisir une ou plusieurs images d'espèce",
+  "AutresObservation": "Autres observations",
+  "Previous": "Previous",
+  "EnregistrerAlerte": "Enregistrer Alerte",
+  "Date_prelev": "Date prélèvement",
+  "Date_commu_presse": "Date de communique de presse",
+  "Date_levée_alerte": "Date levée alerte",
+  "Observation": "Observation",
+  "Prise_charge": "Prise en charge",
+  "Date_créa": "Date de création",
+  "Type": "Type",
+  "Région": "Région",
+  "Engins" : "Engins",
+  "Emetteur": "Emetteur",
+  "Bénéfi": "Demandeur initial",
+  "Réf_cour": "Réf courrier",
+  "Sujet": "Sujet",
+  "Date_récp": "Date réception",
+  "Cour_reçu": "Courrier reçu",
+  "Trait_avis": "Traitement de l’avis",
+  "Assg_à": "Assigné à",
+  "Dt_prévi_réps": "Date prévisionnelle de réponse",
+  "Dt_prise_charge": "Date prise en charge",
+  "Etptrait": "Type d’avis",
+  "Rés": "Résultat",
+  "Réf_avis": "Réf avis",
+  "Dt_rép_av": "Date réponse avis",
+  "Up_rép_av": "Upload réponse avis",
+  "Camp": "Campagnes",
+  "DB": "Date début",
+  "DF": "Date fin",
+  "Value_required": "The Value is required",
+  "Navire": "Navire",
+  "Ress_cible": "Ressources cible",
+  "Obj": "Objectifs",
+  "Remr": "Remarque",
+  "Enr_camp": "Enregistrer campagne",
+  "Service_emetteur": "Service emetteur",
+  "Observ_mer": "Observation en mer",
+  "Alerte": "Alerte",
+  "Sc": "Scientifique",
+  "publique": "publique",
+  "Date": "Date",
+  "Sous_cat": "Sous catégorie",
+  "Catégorie": "Catégorie",
+  "Préalerte": "Préalerte",
+  "Etat_sani": "Etat sanitaire",
+  "Zone": "Zone",
+  "Pt_suivi": "Point de suivi",
+  "Met_jour": "Mettre à jour",
+  "Interne": "Interne",
+  "Externe": "Externe",
+  "Enre_prise_charge": "Enregistrer prise en charge",
+  "Enre_Rés": "Enregistrer Résultat",
+  "Enre_trait_avis": "Enregistrer traitement de l’avis",
+  "Alr_sani": "Alertes sanitaire",
+  "Ajou_aler_sani": "Ajouter une alerte sanitaire",
+  "Nature": "Nature",
+  "Espéces": "Espéces",
+  "Alertes": "Alertes",
+  "Ajou_aler_env": "Ajouter une alerte environnement",
+  "Avis_Sc": "Avis Scientifiques",
+  "Ajou_avis_sc": "Ajouter un avis scientifique",
+  "Action": "Action",
+  "Voir": "Voir",
+  "Ajou_camp": "Ajouter campagne",
+  "Ajou_aler": "Ajouter une alerte",
+  " Ajou_etat_sani": " Ajouter etat sanitaire",
+  "pagePrecedente" : "Page Précédente",
+  "pageSuivante" : "Page Suivante",
+  "previousPage" : "",
+  "nextPage" : "",
+  "Type_de_Test" : "Type de Test"
+}

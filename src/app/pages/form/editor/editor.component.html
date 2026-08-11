@@ -1,0 +1,44 @@
+<div class="container">
+  <div class="content-page marg-top-90 ">
+    <h2 class="titre-h2 titre-table mar-bott-20">Avis Scientifiques</h2>
+    <button class="btn btn-primary btn-block" (click)="AddNewAvisScientifique()">Ajouter un avis scientifique</button>
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>date</th>
+            <th>Emetteur</th>
+            <th>Catégorie</th>
+            <th>Espéces</th>
+            <th>Lieux</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let priseEncharge of AllPriseEncharges">
+            <td>{{ priseEncharge?.date_creation }}</td>
+            <td>{{ priseEncharge?.emetteur }}</td>
+            <td>{{ priseEncharge?.type }}</td>
+            <td>{{ priseEncharge?.beneficiaire }}</td>
+            <td>{{ priseEncharge?.region }}</td>
+            <td>
+              <div class="widget-content-right widget-content-actions">
+                <button class="border-0 btn-transition btn btn-outline-primary"
+                  (click)="openTraitementAvis(priseEncharge)">Traitement de l’avis
+                  <i class="fa fa-solid fa-folder-open"></i>
+                </button>
+              </div>
+            </td>
+            <td>
+              <div class="widget-content-right widget-content-actions">
+                <button class="border-0 btn-transition btn btn-outline-primary"
+                  (click)="openResultat(priseEncharge)">Résultat
+                  <i class="fa fa-solid fa-folder-open"></i>
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

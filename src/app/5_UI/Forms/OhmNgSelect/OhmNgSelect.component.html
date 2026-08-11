@@ -1,0 +1,22 @@
+<div class="force-to-the-bottom">
+  <ng-select class="zo-text btn-add-brand" [items]="items" [bindLabel]="bindLabel" [bindValue]="bindValue"
+    [placeholder]="placeholder" (change)="onItemSelectedChange($event)" (focus)="onItemSelectedFocus($event)" [ngModel]="innerValue"
+    (ngModelChange)="updateValue($event)" [multiple]="multiple">
+    <ng-template ng-option-tmp let-item="item">
+      <div class="d-flex justify-content-between align-items-center">
+        <span>{{ noBindLabel ? item : item[bindLabel] }}</span>
+        <button *ngIf="userIsAdmin && unableEditButton" type="button" class="btn btn-sm btn-secondary ms-2" (click)="editItem(item)">
+          <i class="bx bx-edit"></i>
+        </button>
+      </div>
+    </ng-template>
+    <ng-template ng-notfound-tmp let-searchTerm="searchTerm" *ngIf="unableAddButton && userIsAdmin">
+      <div>
+        <span>{{searchTerm}}</span>
+        <button type="button" class="btn btn-primary me-2 float-end" (click)="addItemToList(searchTerm)">+
+          Ajouter
+        </button>
+      </div>
+    </ng-template>
+  </ng-select>
+</div>

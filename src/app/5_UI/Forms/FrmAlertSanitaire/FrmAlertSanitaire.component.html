@@ -1,0 +1,86 @@
+<form [formGroup]="demandeAlertSanitaireBuilder">
+  <div>
+    <div class="modal-body">
+      <div class="row">
+        <div class="col-12">
+          <div class="card">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="mb-3">
+                    <label class="form-label">
+                      {{"Date_prelev"|translate}}
+                    </label>
+                    <input class="form-control" id="example-date" formControlName="datePrelevement" type="date" />
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="mb-3">
+                    <label class="form-label">
+                      {{"Date_commu_presse"|translate}}
+                    </label>
+                    <input class="form-control" id="example-date" formControlName="dateCommuniquePresse" type="date" />
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="mb-3">
+                    <label class="form-label">
+                      {{"Date_levée_alerte"|translate}}
+                    </label>
+                    <input class="form-control" id="example-date" formControlName="dateLeveeAlerte" type="date" />
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="mb-3">
+                    <label class="form-label">
+                      {{"Especes"|translate}}
+                      <span class="star">*</span></label>
+                    <OhmNgSelect [items]="species" [placeholder]="'Espèces'" [bindLabel]="'title'" [bindValue]="'title'"
+                      [entityName]="environment.entityNameEspecesAlerteSanitaire" (loadData)="getSpecies()"
+                      (eventEmitterOnAdd)="onAddItem($event)" formControlName="specie" [multiple]="false">
+                    </OhmNgSelect>
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="mb-3">
+                    <label class="form-label">
+                      {{"Lieux"|translate}}
+                      <span class="star">*</span></label><br />
+                    <OhmNgSelect [items]="ports" [placeholder]="'Ports'" [bindLabel]="'title'" [bindValue]="'title'"
+                      [entityName]="environment.entityNamePortsAlerteSanitaire" (loadData)="getPorts()"
+                      (eventEmitterOnAdd)="onAddItem($event)" formControlName="port" [multiple]="false">
+                    </OhmNgSelect>
+                  </div>
+                </div>
+                <div class="col-lg-6">
+
+                  <div class="row mb-3">
+                    {{"Observation"|translate}}
+                    <label class="col-md-3 col-form-label"> </label>
+                    <div class="col-md-9">
+                      <textarea class="form-control" formControlName="observation">
+                                    </textarea>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="row mb-3">
+                  <div class="col-md-10">
+                    <button type="button" class="btn btn-primary me-2" (click)="saveAlertSanitaire()">
+                      {{"EnregistrerAlerte"|translate}}
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

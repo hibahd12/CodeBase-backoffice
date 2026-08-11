@@ -1,0 +1,57 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row mb-2">
+                        <div class="col-sm-4">
+                            <div class="search-box me-2 mb-2 d-inline-block">
+                                <div class="position-relative">
+                                    <h2 class="titre-h2 titre-table mar-bott-20">
+                                        Alerte sanitaire</h2>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-8">
+                            <div class="text-sm-end">
+                                <button type="button" class="btn btn-success btn-rounded mb-2 me-2"
+                                    (click)="AddNewForm('Sys_FrmDemandeAlerte',typeSanitaire)"><i
+                                        class="mdi mdi-plus mr-1"></i>
+                                    Ajouter une alerte sanitaire</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <div class="table-responsive mb-0">
+                            <table class="table table-centered table-nowrap">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th>Lieux</th>
+                                        <th>date</th>
+                                        <th>Nature</th>
+                                        <th>Catégorie</th>
+                                        <th>Espéces</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let alert of dataGrid ">
+                                        <td>{{ alert?.port }}</td>
+                                        <td>{{ alert?.date_alert }}</td>
+                                        <td>{{ alert?.nature }}</td>
+                                        <td>{{ alert?.category.title }} </td>
+                                        <td>{{ alert?.specie }}</td>
+                                        <td>
+                                            <button type="button" class="btn btn-sm btn-danger btn-rounded mb-2 me-2"
+                                            (click)="deleteAlerteScientifique(alert)"><i class="fas fa-trash-alt"></i></button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

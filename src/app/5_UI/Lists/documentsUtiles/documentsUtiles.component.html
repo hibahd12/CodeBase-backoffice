@@ -1,0 +1,52 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row mb-2">
+                        <div class="col-sm-4">
+                            <div class="search-box me-2 mb-2 d-inline-block">
+                                <div class="position-relative">
+                                    <h2 class="titre-h2 titre-table mar-bott-20">
+                                        Documents utiles</h2>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-8">
+                            <div class="text-sm-end">
+                                <button type="button" class="btn btn-success btn-rounded mb-2 me-2"
+                                    (click)="NavigateToForm('Sys_FrmDocument')"><i
+                                        class="mdi mdi-plus mr-1"></i>
+                                    Ajouter un document</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <div class="table-responsive mb-0">
+                            <table class="table table-centered table-nowrap">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th style="width: 80%;">Titre</th>
+                                        <th style="width: 20%;">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let document of dataGrid ">
+                                        <td>{{ document?.titre }}</td>
+                                        <td>
+                                            <button type="button" class="btn btn-sm btn-danger btn-rounded mb-2 me-2" title="Supprimer"
+                                                (click)="deleteRow(document)"><i
+                                                    class="fas fa-trash-alt"></i></button>
+                                            <button type="button" class="btn btn-sm btn-success btn-rounded mb-2 me-2" title="Télécharger"
+                                                (click)="telechargerDocument(document)"><i class="fas fa-download"></i></button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

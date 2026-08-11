@@ -1,0 +1,79 @@
+<form [formGroup]="zoneEtatSanitaire">
+  <div class="row mb-4">
+    <label for="horizontal-password-input" class="col-sm-3 col-form-label">Laboratoire responsable</label>
+    <div class="col-sm-9">
+      <OhmNgSelect [items]="LabosResponsables" [placeholder]="'Laboratoire responsable'" [bindLabel]="'title'" [bindValue]="'_id'"
+        [entityName]="environment.entityNameLaboResponsable" (loadData)="getLabosResponsables()"
+        (eventEmitterOnAdd)="onAddItem($event)" formControlName="idLaboResponsable" [multiple]="false">
+      </OhmNgSelect>
+    </div>
+  </div>
+  <div class="row mb-4">
+    <label for="horizontal-password-input" class="col-sm-3 col-form-label">Type Production</label>
+    <div class="col-sm-9">
+      <OhmNgSelect [items]="TypesProduction" [placeholder]="'Type Production'" [bindLabel]="'title'" [bindValue]="'_id'"
+        [entityName]="environment.entityNameTypeProduction" (loadData)="getTypesProduction()"
+        (eventEmitterOnAdd)="onAddItem($event)" formControlName="idTypeProduction" [multiple]="false">
+      </OhmNgSelect>
+    </div>
+  </div>
+  <div class="row mb-4">
+    <label for="horizontal-password-input" class="col-sm-3 col-form-label">Espèce cible 1</label>
+    <div class="col-sm-9">
+      <OhmNgSelect [items]="EspecesCibles1" [placeholder]="'Espece cible 1'" [bindLabel]="'title'" [bindValue]="'_id'"
+        [entityName]="environment.entityNameEspeceCible1" (loadData)="getEspecesCibles1()"
+        (eventEmitterOnAdd)="onAddItem($event)" formControlName="idEspececible1" [multiple]="false">
+      </OhmNgSelect>
+    </div>
+  </div>
+  <div class="row mb-4">
+    <label for="horizontal-password-input" class="col-sm-3 col-form-label">Espèce cible 2</label>
+    <div class="col-sm-9">
+      <OhmNgSelect [items]="EspecesCibles2" [placeholder]="'Espece cible 2'" [bindLabel]="'title'" [bindValue]="'_id'"
+        [entityName]="environment.entityNameEspeceCible2" (loadData)="getEspecesCibles2()"
+        (eventEmitterOnAdd)="onAddItem($event)" formControlName="idEspececible2" [multiple]="false">
+      </OhmNgSelect>
+    </div>
+  </div>
+  <div class="row mb-4">
+    <label for="horizontal-password-input" class="col-sm-3 col-form-label">Statut sanitaire zone</label>
+    <div class="col-sm-9 d-flex justify-content-start gap-5">
+      <div *ngFor="let option of ['A', 'B', 'C', 'D']; let i = index" class="radio-button">
+        <label class="mr-3">
+          <input type="radio" name="statutSanitaire" [value]="option" formControlName="statutSanitaire" />
+          {{ option }}
+        </label>
+      </div>
+    </div>
+  </div>
+  <div class="row mb-4">
+    <label for="horizontal-password-input" class="col-sm-3 col-form-label">Date statut sanitaire</label>
+    <div class="col-sm-9">
+      <input class="form-control" id="example-date" type="date" name="date" formControlName="dateStatutSanitaire" />
+    </div>
+  </div>
+  <div class="row mb-4">
+    <label for="horizontal-password-input" class="col-sm-3 col-form-label">Point de suivi</label>
+    <div class="col-sm-9">
+      <OhmNgSelect [items]="PointsSuivi" [placeholder]="'Point de suivi'" [bindLabel]="'title'" [bindValue]="'title'"
+        [entityName]="environment.entityNameEtatSanitaire" (loadData)="getZonesEtatSanitaire()"
+        (eventEmitterOnAdd)="onAddPointSuivi($event)" formControlName="pointSuivi" [multiple]="false"
+        (eventEmitterOnChange)="onPointSuiviChange($event)" [unableEditButton]="true">
+      </OhmNgSelect>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-10">
+      <div class="mb-3">
+        <button type="submit" class="btn btn-primary w-md" (click)="updateZoneSanitaire()">Enregistrer</button>
+      </div>
+    </div>
+    <div class="col-lg-2">
+      <div class="mb-3">
+        <button type="submit" class="btn btn-primary me-2" (click)="updateDetailsEtatSanitaire()"
+          [routerLink]="['/Sys_DetailsEtatSanitaire', regionSanitaire?._id]"
+          [disabled]="!zoneEtatSanitaire.valid || !form.valid">Details état sanitaire</button>
+      </div>
+    </div>
+  </div>
+</form>

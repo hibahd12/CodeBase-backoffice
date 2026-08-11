@@ -1,0 +1,97 @@
+<div>
+  <form [formGroup]="form">
+    <div class="modal-body">
+      <div class="row">
+        <div class="col-12">
+          <div class="card">
+            <h5 class="mb-0">{{"Camp" | translate}}</h5>
+            <div class="card-body">
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="mb-3">
+                    <label class="form-label">{{"Date_créa" | translate}}<span class="star">*</span></label>
+                    <input class="form-control" id="example-date" formControlName="dateCreation" type="date" />
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="mb-3">
+                    <div class="mb-3">
+                      <label class="form-label">{{"Type" | translate}}</label>
+                      <OhmNgSelect [items]="typeCompagnes" [placeholder]="'Type'" [bindLabel]="'title'"
+                        [bindValue]="'title'" [entityName]="environment.entityNameTypeCampagne" (loadData)="getAllTypeCompagnes()"
+                        (eventEmitterOnAdd)="onAddItem($event)" formControlName="type" [multiple]="false">
+                      </OhmNgSelect>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="mb-3">
+                    <label class="form-label">{{"DB" | translate}}<span class="star">*</span></label>
+                    <input class="form-control" id="example-date" type="date" name="date" formControlName="dateDebut" />
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="mb-3">
+                    <label class="form-label">{{"DF" | translate}}<span class="star">*</span></label>
+                    <input type="date" formControlName="dateFin" class="form-control">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="mb-3">
+                    <label class="form-label">{{"Région" | translate}}</label>
+                    <OhmNgSelect [items]="regionCompagnes" [placeholder]="'Régions'" [bindLabel]="'title'"
+                      [bindValue]="'title'" [entityName]="environment.entityNameRegionCampagne" (loadData)="getRegions()"
+                      (eventEmitterOnAdd)="onAddItem($event)" formControlName="region" [multiple]="false">
+                    </OhmNgSelect>
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="mb-3">
+                    <label class="form-label">{{"Navire" | translate}}<span class="star">*</span></label>
+                    <OhmNgSelect [items]="navires" [placeholder]="'Navire'" [bindLabel]="'title'" [bindValue]="'title'"
+                      [entityName]="environment.entityNameNavireCampagne" (loadData)="getAllNavires()" [unableAddButton]="true"
+                      (eventEmitterOnAdd)="onAddItem($event)" formControlName="navire" [multiple]="false">
+                    </OhmNgSelect>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="mb-3">
+                    <label class="form-label">Ressources cible</label>
+                    <OhmNgSelect [items]="ressourcesCible" [placeholder]="'Ressources cible'" [bindLabel]="'title'"
+                      [bindValue]="'title'" [entityName]="environment.entityNameRessourceCible" (loadData)="getRessourcesCible()"
+                      (eventEmitterOnAdd)="onAddItem($event)" formControlName="ressourceCible">
+                    </OhmNgSelect>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="mb-3">
+                    <label class="form-label">Objectifs</label>
+                    <textarea class="form-control" formControlName="objectif">
+                      </textarea>
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="mb-3">
+                    <label class="form-label">Remarque</label>
+                    <textarea class="form-control" formControlName="remarque">
+                      </textarea>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <button class="btn btn-primary me-2" (click)="formSaveHandler()">Enregistrer
+              campagne</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

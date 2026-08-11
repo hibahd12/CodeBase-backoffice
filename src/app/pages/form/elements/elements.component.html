@@ -1,0 +1,28 @@
+<div class="container">
+    <h1 class="titre-h2 titre-table mar-bott-20">Demandes d'alertes</h1>
+    <div class="content-page marg-top-90 ">
+        <button class="btn btn-primary btn-block" (click)="AddNewAlert()">Ajouter une demande d'alerte</button>
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Lieux</th>
+                        <th>date</th>
+                        <th>Emetteur</th>
+                        <th>Catégorie</th>
+                        <th>Espéces</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let alert of AllDemandesAlerts ">
+                        <td>{{ alert?.port }}</td>
+                        <td>{{ alert?.date }}</td>
+                        <td>{{ alert?.emetteur }}</td>
+                        <td>{{ alert?.category?.name }} {{ ' ' }} </td>
+                        <td>{{ alert?.specie }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

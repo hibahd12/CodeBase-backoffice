@@ -1,0 +1,85 @@
+<form [formGroup]="form">
+  <div class="row mb-4">
+    <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">{{"Date_échanti"|translate}}</label>
+    <div class="col-sm-9">
+      <input type="date" class="form-control" formControlName="dateEchantillonnagePhytop">
+    </div>
+  </div>
+  <div class="row mb-4">
+    <label for="horizontal-email-input" class="col-sm-3 col-form-label">{{"NvAl _Phytop"|translate}}</label>
+    <div class="col-sm-9">
+      <div class="col-sm-9 d-flex justify-content-start gap-5">
+        <div *ngFor="let option of ['Pré-alerte', 'Normale']; let i = index" class="radio-button">
+          <label class="mr-3">
+            <input type="radio" name="niveauAlertePhytoplancton" [value]="option" formControlName="niveauAlertePhytoplancton" />
+            {{ option }}
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row mb-4">
+    <label for="horizontal-password-input" class="col-sm-3 col-form-label">{{"Esp_respo_préalerte"|translate}}</label>
+    <div class="col-sm-9">
+      <input type="text" class="form-control" formControlName="especeResponsablePrealerte" >
+    </div>
+  </div>
+  <div class="row mb-4">
+    <label for="horizontal-password-input" class="col-sm-3 col-form-label">{{"Ps-nitz_spp"|translate}}</label>
+    <div class="col-sm-9">
+      <input type="number" class="form-control" formControlName="pseudoNitzschiaSpp">
+    </div>
+  </div>
+  <div class="row mb-4">
+    <label for="horizontal-password-input" class="col-sm-3 col-form-label">{{"Dino_spp"|translate}}</label>
+    <div class="col-sm-9">
+      <input type="number" class="form-control" formControlName="dinophysisSpp">
+    </div>
+  </div>
+  <div class="row mb-4">
+    <label for="horizontal-password-input" class="col-sm-3 col-form-label">{{"Pror_lima"|translate}}</label>
+    <div class="col-sm-9">
+      <input type="number" class="form-control" formControlName="prorocentrumLima">
+    </div>
+  </div>
+  <div class="row mb-4">
+    <label for="horizontal-password-input" class="col-sm-3 col-form-label">{{"Alexa_spp"|translate}}</label>
+    <div class="col-sm-9">
+      <input type="number" class="form-control" formControlName="alexandriumSpp">
+    </div>
+  </div>
+  <div class="row mb-4">
+    <label for="horizontal-password-input" class="col-sm-3 col-form-label">{{"Proto_reti"|translate}}</label>
+    <div class="col-sm-9">
+      <input type="number" class="form-control" formControlName="protoceratiumReticulatum">
+    </div>
+  </div>
+  <div class="row mb-4">
+    <label for="horizontal-password-input" class="col-sm-3 col-form-label">{{"Lingu_poly"|translate}}</label>
+    <div class="col-sm-9">
+      <input type="number" class="form-control" formControlName="lingulodiniumPolyedrum">
+    </div>
+  </div>
+  <div class="row mb-4">
+    <label for="horizontal-password-input" class="col-sm-3 col-form-label">{{"Gony_spini"|translate}}</label>
+    <div class="col-sm-9">
+      <input type="number" class="form-control" formControlName="gonyaulaxSpinifera">
+    </div>
+  </div>
+  <div class="row mb-4">
+    <label for="horizontal-password-input" class="col-sm-3 col-form-label">{{"Azad_spin"|translate}}</label>
+    <div class="col-sm-9">
+      <input type="number" class="form-control" formControlName="azadiniumSpinosum">
+    </div>
+  </div>
+  <div class="row mb-4">
+    <label for="horizontal-password-input" class="col-sm-3 col-form-label">{{"Gym_caten"}}</label>
+    <div class="col-sm-9">
+      <input type="number" class="form-control" formControlName="gymnodiniumCatenatum">
+    </div>
+  </div>
+  <div class="d-flex flex-wrap gap-2">
+    <button type="submit" class="btn btn-primary w-md" (click)="formSaveHandler()">{{"Enre"|translate}}</button>
+    <button type="submit" class="btn btn-secondary w-md">{{"Ann"|translate}}</button>
+  </div>
+</form>

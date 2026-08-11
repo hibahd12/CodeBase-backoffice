@@ -1,0 +1,66 @@
+<div>
+  <form [formGroup]="form">
+    <div class="modal-body">
+      <div class="row">
+        <div class="col-12">
+          <div class="card">
+            <h4 class="mb-0"><strong>Etat sanitaire</strong></h4>
+            <div class="card-body">
+              <br>
+              <div class="row mb-4">
+                <label for="horizontal-password-input" class="col-sm-3 col-form-label">Région</label>
+                <div class="col-sm-9">
+                  <OhmNgSelect [items]="regionsEtatSanitaire" [placeholder]="'Région'" [bindLabel]="'title'"
+                    [bindValue]="'title'" [entityName]="environment.entityNameEtatSanitaire"
+                    (eventEmitterOnAdd)="onAddRegion($event)" formControlName="regionSanitaire" [multiple]="false"
+                    (loadData)="getRegionsSanitaire()" (eventEmitterOnFocus)="onRegionFocus($event)"
+                    (eventEmitterOnChange)="onRegionChange($event)">
+                  </OhmNgSelect>
+                </div>
+              </div>
+
+              <div class="row mb-4" *ngIf="regionSelected">
+                <label for="horizontal-x-input" class="col-sm-3 col-form-label">Localisation de la Région</label>
+                <div class="col-sm-9 d-flex align-items-center"> 
+                  <div class="me-2">
+                    <div class="d-flex align-items-center">
+                      <label for="horizontal-x-input" class="form-label me-2">X</label>
+                      <input type="text" formControlName="x" class="form-control" id="horizontal-x-input" placeholder="Entrez la coordonnée X" [value]="regionSanitaire?.x || 0" [readonly]="!isEditing"  [ngClass]="{'text-muted': !isEditing}">
+                    </div>
+                  </div>
+                  <div class="me-2">
+                    <div class="d-flex align-items-center">
+                      <label for="horizontal-y-input" class="form-label me-2">Y</label>
+                      <input type="text" formControlName="y" class="form-control" id="horizontal-y-input" placeholder="Entrez la coordonnée Y" [value]="regionSanitaire?.y || 0" [readonly]="!isEditing"  [ngClass]="{'text-muted': !isEditing}">
+                    </div>
+                  </div>
+                  <div>
+                    <i class='bx bx-edit icon-style icon-edit' (click)="edit()" *ngIf="!isEditing" style="cursor: pointer;" tooltip="Modifier"></i> 
+                    <i class='bx bx-save icon-style icon-save' (click)="save()" *ngIf="isEditing" style="margin-right: 10px; cursor: pointer;" tooltip="Sauvegarder"></i>
+                    <i class='bx bx-x icon-style icon-cancel' (click)="cancel()" *ngIf="isEditing" tooltip="Annuler" style="cursor: pointer;"></i> 
+                  </div>
+                </div>
+              </div>
+
+              <div class="row mb-4" *ngIf="regionSelected">
+                <label for="horizontal-password-input" class="col-sm-3 col-form-label">Zone</label>
+                <div class="col-sm-9">
+                  <OhmNgSelect [items]="zonesEtatSanitaire" [placeholder]="'Zones'" [bindLabel]="'title'"
+                    [bindValue]="this.zone" [entityName]="environment.entityNameEtatSanitaire"
+                    (loadData)="getZonesEtatSanitaire()" (eventEmitterOnAdd)="onAddZone($event)" [unableEditButton]="true"
+                    formControlName="zoneSanitaire" [multiple]="false" (eventEmitterOnChange)="onZoneChange($event)">
+                  </OhmNgSelect>
+                </div>
+              </div>
+              <div class="mb-4" *ngIf="zoneSelected">
+                <EtatSanitaireGenerale [zoneSanitaire]="zoneSanitaire" [regionSanitaire]="regionSanitaire"
+                  [form]="form">
+                </EtatSanitaireGenerale>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
